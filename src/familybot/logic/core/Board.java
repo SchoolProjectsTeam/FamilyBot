@@ -5,6 +5,8 @@
 package familybot.logic.core;
 
 import familybot.logic.exceptions.NotInitializedException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -16,27 +18,21 @@ public class Board {
     private int xSize;
     private int ySize;
     private boolean init;
-    Coordinate start;
-    Coordinate end;
+    private Coordinate start;
+    private Coordinate end;
     private List<Coordinate> blocked;
     
     public Board(int x, int y){
         validateComponents(x, y);
         xSize = x;
         ySize = y;
+        blocked = new ArrayList<>();
     }
     
-    public void initialize(Coordinate start, Coordinate end, List<Coordinate> blocked){
-        if(start.equals(end)){
-            throw new IllegalArgumentException("Attempted to set the start point and the end point in the same coordinates");
-        }
-        this.start = start;
-        this.end = end;
-        for(Coordinate pos : blocked){
-            this.blocked.add(pos);
-        }
-        init = true;
-    }
+    public void setStart(Coordinate start){this.start = start;}
+    public void setEnd(Coordinate end){this.end = end;}
+    public void setBlockeds(List<Coordinate> blocked){this.blocked = blocked;}
+    public void addBlocked(Coordinate pos){blocked.add(pos);}
     
     private void validateComponents(int x, int y){
         if(x < 0 || y < 0){
@@ -45,7 +41,7 @@ public class Board {
     }
     
     private void validateInit(){
-        if(!init){
+        if(start == null || end == null){
             throw new NotInitializedException("Attempted to execute an action without initializing the board.");
         }
     }
@@ -97,5 +93,8 @@ public class Board {
     }
     
     public List<Coordinate> getBlocked(){return blocked;}
+    public int getX(){return xSize;}
+    public int getY(){return ySize;}
+    public Coordinate getEnd(){return end;}
    
 }

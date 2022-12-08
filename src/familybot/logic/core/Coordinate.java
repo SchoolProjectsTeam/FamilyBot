@@ -15,10 +15,10 @@ public class Coordinate {
     private Board board;
     
     public Coordinate(int x, int y, Board board){
+        this.board = board;
         validate(x, y);
         this.x = x;
         this.y = y;
-        this.board = board;
     }
     
     private void validate(int x, int y){
