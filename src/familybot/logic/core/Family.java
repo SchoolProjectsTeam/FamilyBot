@@ -28,8 +28,7 @@ public class Family {
             robots.add(new Robot(map, generateID()));
         }
         record = new SimulationRecord(robots);
-    }
-    
+    }    
     private void walk(){
         for(Robot rob : robots){
             boolean repeat = false;
