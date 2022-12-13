@@ -23,18 +23,8 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.LayoutManager;
-import java.awt.Panel;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 
-import java.awt.CardLayout;
 
 public class Map extends JFrame {
 
