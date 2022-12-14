@@ -16,11 +16,9 @@ public class Family {
 	private CharGenerator charGen;
 	private SimulationRecord record;
 
+
 	public Family(Board map){
 		this.map = map;
-	}
-
-	public Family(){
 		actualWalk = 0;
 		charGen = new CharGenerator();
 		robots = new ArrayList<>(10);

@@ -1,7 +1,6 @@
 package UI;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,17 +11,19 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import javax.swing.JScrollBar;
 
-import java.awt.ScrollPane;
+import java.util.ArrayList;
+import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
 import javax.swing.BoxLayout;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.awt.Canvas;
-import java.awt.Color;
+import familybot.logic.core.Board;
+import familybot.logic.core.Family;
+
+import java.awt.Component;
+import java.awt.GridLayout;
 
 
 
@@ -31,48 +32,63 @@ public class Map extends JFrame {
 	private JPanel contentPane;
 	JPanel mapPanel = new JPanel();
 	private ArrayList<JButton> casillas;
-	private int coordX;
-	private int coordY;
+
 	/**
 	 * Create the frame.
 	 */
-	public Map(int x, int y) {
-		coordX = x;
-		coordY = y;
+	public Map(Board map) {
 		casillas = new ArrayList<JButton>();
 		initComponents();
-		dibujarMapa(coordX, coordY);
+		dibujarMapa(map);
 
 
 
 	}
 	public void initComponents(){
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 737, 542);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[711px]", "[493px]"));
-		
+		contentPane.setLayout(new BorderLayout(2, 2));
+
 		JScrollPane scrollPane = new JScrollPane();
-		contentPane.add(scrollPane, "cell 0 0,grow");
-		
-		
+		contentPane.add(scrollPane, BorderLayout.CENTER);
+
+
 		scrollPane.setViewportView(mapPanel);
-		mapPanel.setLayout(new MigLayout("", "[]", "[]"));
+		mapPanel.setLayout(new MigLayout("", "[][][][][][][][][][][][][][][][][][][][][][][][]", "[][][][][][][][][][][][][][][][][]"));
+
+		JPanel buttonsPanel = new JPanel();
+		contentPane.add(buttonsPanel, BorderLayout.EAST);
+		buttonsPanel.setLayout(new MigLayout("", "[]", "[]"));
+
+		JButton btnCorrerSimulacion = new JButton("Correr Simulacion");
+		buttonsPanel.add(btnCorrerSimulacion, "cell 0 0");
 
 	}
 
-	public void dibujarMapa(int x, int y){
-		for(int i = 0; i<x; i++){
-			for(int j = 0; j<y; j++){
+	public void dibujarMapa(Board map){
+
+
+		for(int i = 0; i<map.getX(); i++){
+			for(int j = 0; j<map.getY(); j++){
 				JPanel panel = new JPanel();
-				panel.setBackground(Color.RED);
 				DimensionUIResource a = new DimensionUIResource(100, 100);
 				panel.setPreferredSize(a);
-				mapPanel.add(panel, "cell" + i + " " + j );
+				if(map.startPosition().getX() == i && map.startPosition().getY() == j){
+					panel.setBackground(Color.BLUE);	
+					mapPanel.add(panel, "cell" + i + " " + j );
+				}
+				else if(map.getEnd().getX() == i && map.getEnd().getY() == j){
+					panel.setBackground(Color.BLACK);	
+					mapPanel.add(panel, "cell" + i + " " + j );
+				}
+				else{	
+					panel.setBackground(Color.GRAY);
+					mapPanel.add(panel, "cell" + i + " " + j );
+				}
+				mapPanel.updateUI();
 			}
-			mapPanel.updateUI();	
-		}
+		}	
 	}
 }
