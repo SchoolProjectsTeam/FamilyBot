@@ -7,6 +7,7 @@ import java.awt.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.DimensionUIResource;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -112,6 +113,8 @@ public class MainWindows extends JFrame {
 		map.setVisible(true);
 		data.addFamily(a);
 	}
+	
+
 
 
 }
