@@ -98,6 +98,7 @@ public class Map extends JFrame {
 
 		buttonsPanel.add(btnAgregarBotSalida, "cell 0 1");
 	}
+	
 
 	public void dibujarMapa(Board map){
 		for(int i = 0; i<map.getX(); i++){
