@@ -4,12 +4,15 @@ import familybot.logic.utils.CharGenerator;
 import familybot.logic.utils.ID;
 import familybot.logic.utils.SimulationRecord;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Family {
+public class Family implements Serializable{
 
+	private static final long serialVersionUID = -3873794542448627534L;
+	
 	private List<Robot> robots;
 	private Board map;
 	private int actualWalk;
