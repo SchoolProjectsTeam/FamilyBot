@@ -76,4 +76,6 @@ public class Family {
 	private ID generateID() {
 		return new ID(charGen.get(), actualWalk);
 	}
+	
+	public List<Robot> getRobots(){return robots;}
 }
