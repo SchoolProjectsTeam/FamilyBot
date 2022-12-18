@@ -54,6 +54,7 @@ public class Map extends JFrame {
 		initComponents();
 		dibujarMapa(map);
 		
+		
 
 
 
@@ -132,6 +133,7 @@ public class Map extends JFrame {
 			}
 		}	
 		createRobots();
+		family.runSimulation();
 	}
 	public void createRobots(){
 		int auxiliarx = 0;
@@ -175,6 +177,7 @@ public class Map extends JFrame {
 			robotNum++;
 		}
 		mapPanel.updateUI();*/
-		family.runSimulation();
+
+		
 	}
 }
