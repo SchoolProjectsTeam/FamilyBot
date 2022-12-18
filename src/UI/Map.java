@@ -160,7 +160,7 @@ public class Map extends JFrame {
 	}
 	
 	public void nextStep(){
-		int robotNum = 0;
+		/*int robotNum = 0;
 		for (Robot rob : family.getRobots()){
 			int xPast = rob.getPosition().getX();
 			int yPast = rob.getPosition().getY();
@@ -173,6 +173,7 @@ public class Map extends JFrame {
 			}
 			robotNum++;
 		}
-		mapPanel.updateUI();
+		mapPanel.updateUI();*/
+		family.runSimulation();
 	}
 }
