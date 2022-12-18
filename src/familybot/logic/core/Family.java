@@ -57,6 +57,7 @@ public class Family {
 		evolve();
 	}
 
+	
 	private void evolve(){
 		actualWalk++;
 		charGen.restart();
