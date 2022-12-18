@@ -60,6 +60,7 @@ public class Family implements Serializable{
 		evolve();
 	}
 
+	
 	private void evolve(){
 		actualWalk++;
 		charGen.restart();
@@ -79,4 +80,6 @@ public class Family implements Serializable{
 	private ID generateID() {
 		return new ID(charGen.get(), actualWalk);
 	}
+	
+	public List<Robot> getRobots(){return robots;}
 }

@@ -109,7 +109,7 @@ public class MainWindows extends JFrame {
 		board.setEnd(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));
 		System.out.println(board.startPosition().getX() + " " +  board.startPosition().getY());
 		Family a = new Family(board);
-		map = new Map(board);
+		map = new Map(board, a);
 		map.setVisible(true);
 		data.addFamily(a);
 	}
