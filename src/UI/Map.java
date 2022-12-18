@@ -53,6 +53,7 @@ public class Map extends JFrame {
 		bots = new JPanel[10];
 		initComponents();
 		dibujarMapa(map);
+		
 
 
 
