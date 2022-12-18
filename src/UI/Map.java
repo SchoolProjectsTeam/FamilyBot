@@ -3,6 +3,7 @@ package UI;
 
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -22,7 +23,9 @@ import java.awt.Adjustable;
 import javax.swing.BoxLayout;
 
 import familybot.logic.core.Board;
+import familybot.logic.core.Coordinate;
 import familybot.logic.core.Family;
+import familybot.logic.core.Robot;
 
 import java.awt.Component;
 import java.awt.GridLayout;
@@ -35,21 +38,22 @@ public class Map extends JFrame {
 
 	private JPanel contentPane;
 	JPanel mapPanel = new JPanel();
-	//private ArrayList<JPanel> casillas;
 	private JPanel [][] cells;
 	private JPanel [] bots;
 	private Board map;
+	private Family family;
 
 	/**
 	 * Create the frame.
 	 */
-	public Map(Board map) {
+	public Map(Board map, Family family) {
+		this.family = family;
 		this.map = map;
-		//casillas = new ArrayList<JPanel>();
 		cells = new JPanel [map.getX()][map.getY()];
 		bots = new JPanel[10];
 		initComponents();
 		dibujarMapa(map);
+		
 
 
 
@@ -70,18 +74,11 @@ public class Map extends JFrame {
 
 		JPanel buttonsPanel = new JPanel();
 		contentPane.add(buttonsPanel, BorderLayout.EAST);
-		buttonsPanel.setLayout(new MigLayout("", "[]", "[][]"));
+		buttonsPanel.setLayout(new MigLayout("", "[]", "[][][]"));
 
 		JButton btnCorrerSimulacion = new JButton("Correr Simulacion");
 		btnCorrerSimulacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/*JPanel agregartest = new JPanel();
-								DimensionUIResource a = new DimensionUIResource(50, 50);
-								agregartest.setPreferredSize(a);
-								casillas.get(5).add(agregartest,"cell 1 1" );
-								casillas.get(5).updateUI();
-								casillas.get(5).remove(agregartest);*/
-
 			}
 		});
 		buttonsPanel.add(btnCorrerSimulacion, "cell 0 0");
@@ -97,6 +94,14 @@ public class Map extends JFrame {
 		});
 
 		buttonsPanel.add(btnAgregarBotSalida, "cell 0 1");
+		
+		JButton btnTeststep = new JButton("TestStep");
+		btnTeststep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				nextStep();
+			}
+		});
+		buttonsPanel.add(btnTeststep, "cell 0 2");
 	}
 	
 
@@ -132,8 +137,11 @@ public class Map extends JFrame {
 		int auxiliarx = 0;
 		int auxiliary = 0;
 		int count = 0;
+		int numRobot = 0;
 		for(int i = 0; i<10 ; i++){
+			JLabel name = new JLabel(Integer.toString(numRobot));
 			JPanel bot = new JPanel();
+			bot.add(name);
 			DimensionUIResource a = new DimensionUIResource(20, 20);
 			bot.setPreferredSize(a);
 			cells[map.startPosition().getX()][map.startPosition().getY()].add(bot, "cell" + auxiliarx +" "+ auxiliary);
@@ -146,8 +154,27 @@ public class Map extends JFrame {
 				auxiliarx=0;
 				auxiliary++;
 			}
+			numRobot++;
 		}
 		cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
 
+	}
+	
+	public void nextStep(){
+		/*int robotNum = 0;
+		for (Robot rob : family.getRobots()){
+			int xPast = rob.getPosition().getX();
+			int yPast = rob.getPosition().getY();
+			if(rob.walkStep()){
+				int nextX = rob.getPath().get(rob.getPath().size()-1).getX();
+				int nextY = rob.getPath().get(rob.getPath().size()-1).getY();
+				cells[xPast][yPast].remove(bots[robotNum]);
+				cells[nextX][nextY].add(bots[robotNum]);
+				System.out.println(robotNum+" "+nextX + " " + nextY + " ");
+			}
+			robotNum++;
+		}
+		mapPanel.updateUI();*/
+		family.runSimulation();
 	}
 }
