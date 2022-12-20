@@ -53,7 +53,7 @@ public class Map extends JFrame {
 		bots = new JPanel[10];
 		initComponents();
 		dibujarMapa(map);
-		System.out.println("Inicio "+map.startPosition().getX()+" " +map.startPosition().getY());
+		System.out.println("Inicio "+map.startPosition().getX()+" " +map.startPosition().getY() + "\n" + "Fin " + map.getEnd().getX() + " " + map.getEnd().getY());
 		family.runSimulation();
 
 		for(Robot rob : family.getRobots()) {
@@ -139,9 +139,8 @@ public class Map extends JFrame {
 			}
 		}	
 		createRobots();
-
-		//family.runSimulation();
 	}
+
 	public void createRobots(){
 		int auxiliarx = 0;
 		int auxiliary = 0;
@@ -169,14 +168,27 @@ public class Map extends JFrame {
 
 	}
 
+	int countSteps = 0;
+	int countRobots = 0;
 	public void nextStep(){
-		for(int i = 0; i<10;i++) {
-			for(Coordinate path : family.getRobots().get(i).getPath()) {
-				cells[path.getX()][path.getY()].add(bots[i]);
-			}
+		
+		for (Robot robot : family.getRobots()) {
+
+
+			countRobots++;
+			System.out.println("Robot"+" "+robot.getID()+" "+robot.getPath().get(countSteps));
 		}
+		countSteps++;
+		countRobots = 0;
+		mapPanel.updateUI();
 	}
 
-	
-	
+
+
 }
+
+
+
+
+
+
