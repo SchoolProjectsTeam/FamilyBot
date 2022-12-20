@@ -1,33 +1,25 @@
 package UI;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.List;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.DimensionUIResource;
-
-import net.miginfocom.swing.MigLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import familybot.logic.core.Board;
-import familybot.logic.core.Coordinate;
 import familybot.logic.core.Family;
-
-import java.awt.Font;
-import java.util.Random;
+import net.miginfocom.swing.MigLayout;
 
 public class MainWindows extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2736362071613527529L;
 	private JPanel contentPane;
 	private JButton mapButton = new JButton("Lanzar Mapa A");
 	private Map map;
@@ -84,23 +76,6 @@ public class MainWindows extends JFrame {
 		inputY.setColumns(10);
 		contentPane.add(mapButton, "cell 0 2 2 1,alignx center,aligny center");
 	}
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainWindows frame = new MainWindows();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
-	/**
-	 * 
-	 */
-	
 	
 	public void createNewFamily(){
 		Board board = new Board(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()));
