@@ -58,7 +58,7 @@ public class AuxiliarFamilyCreator extends JFrame {
 		Board board = new Board(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()));
 		board.setStart(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));	
 		board.setEnd(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));
-		Family a = new Family(board);
+		Family a = new Family(board, "");//pendiente
 		SimulationController.Get().loadFamilies().add(a);
 	}
 }

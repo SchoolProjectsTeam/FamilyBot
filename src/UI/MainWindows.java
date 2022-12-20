@@ -1,5 +1,7 @@
 package UI;
 
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,15 +15,12 @@ import javax.swing.JTextField;
 import familybot.logic.controllers.SimulationController;
 import familybot.logic.core.Board;
 import familybot.logic.core.Family;
-<<<<<<< HEAD
-import net.miginfocom.swing.MigLayout;
-=======
 
-import java.awt.Font;
+import net.miginfocom.swing.MigLayout;
+
 import java.util.Random;
 import javax.swing.JScrollPane;
 import javax.swing.JMenuBar;
->>>>>>> refs/heads/Hyzokaaa
 
 public class MainWindows extends JFrame {
 
@@ -94,15 +93,6 @@ public class MainWindows extends JFrame {
 		familyList.setLayout(new MigLayout("", "[]", "[]"));
 	}
 	
-<<<<<<< HEAD
-	public void createNewFamily(){
-		Board board = new Board(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()));
-		board.setStart(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));	
-		board.setEnd(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));
-		Family a = new Family(board);
-		map = new Map(board, a);
-		map.setVisible(true);
-=======
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -115,8 +105,7 @@ public class MainWindows extends JFrame {
 			}
 		});
 	}
-	
->>>>>>> refs/heads/Hyzokaaa
+
 
 
 	public void test() {
