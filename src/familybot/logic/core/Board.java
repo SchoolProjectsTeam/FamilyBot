@@ -53,7 +53,7 @@ public class Board {
 
 	public Coordinate startPosition(){
 		validateInit();
-		return start;
+		return new Coordinate(start.getX(), start.getY(), this);
 	}
 
 	public int maxSteps(){
@@ -85,11 +85,12 @@ public class Board {
 		return !blocked.contains(new Coordinate(x, y, this));
 	}
 
-	public void validatePosition(Integer x, Integer y){
+	public boolean validatePosition(Integer x, Integer y){
 		validateComponents(x, y);
 		if(x >= xSize || y >= ySize){
 			throw new IllegalArgumentException("Attempted to set a position out of the board's boundaries.");
 		}
+		return true;
 	}
 
 	public List<Coordinate> getBlocked(){return blocked;}

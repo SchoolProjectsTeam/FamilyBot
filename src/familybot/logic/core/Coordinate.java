@@ -20,8 +20,9 @@ public class Coordinate {
         this.x = x;
         this.y = y;
     }
+
     
-    private void validate(int x, int y){
+    public void validate(int x, int y){
         board.validatePosition(x, y);
     }
     
