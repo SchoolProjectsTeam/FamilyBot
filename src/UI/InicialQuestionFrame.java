@@ -54,10 +54,7 @@ public class InicialQuestionFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[][]", "[][][][324.00][71.00]"));
-		
-		JLabel lblNewLabel = new JLabel("No existen familias en la base de datos, \u00BFdesea crear una nueva familia?");
-		contentPane.add(lblNewLabel, "cell 0 0 2 4,alignx center,aligny center");
+		contentPane.setLayout(new MigLayout("", "[][]", "[][][][71.00]"));
 		
 		JButton btnNewButton = new JButton("Si");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -66,7 +63,7 @@ public class InicialQuestionFrame extends JFrame {
 				dispose();
 			}
 		});
-		contentPane.add(btnNewButton, "flowx,cell 1 4,alignx center");
+		contentPane.add(btnNewButton, "flowx,cell 1 3,alignx center");
 		
 		JButton btnNewButton_1 = new JButton("No");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -74,7 +71,7 @@ public class InicialQuestionFrame extends JFrame {
 				dispose();
 			}
 		});
-		contentPane.add(btnNewButton_1, "cell 1 4");
+		contentPane.add(btnNewButton_1, "cell 1 3");
 	}
 	
 	
