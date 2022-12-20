@@ -18,9 +18,11 @@ public class Family implements Serializable{
 	private int actualWalk;
 	private CharGenerator charGen;
 	private SimulationRecord record;
+	private String friendlyID;
 
 
-	public Family(Board map){
+	public Family(Board map, String name){
+		this.friendlyID = name;
 		this.map = map;
 		actualWalk = 0;
 		charGen = new CharGenerator();
@@ -65,6 +67,7 @@ public class Family implements Serializable{
 	
 	private void evolve() {
 
+			
 			robots.set(6, new Robot(map, generateID(), robots.get(0), robots.get(1)));
 			robots.set(7, new Robot(map, generateID(), robots.get(1), robots.get(2)));
 			robots.set(8, new Robot(map, generateID(), robots.get(2), robots.get(3)));
@@ -85,4 +88,6 @@ public class Family implements Serializable{
 	}
 	
 	public List<Robot> getRobots(){return robots;}
+	public SimulationRecord getRecord() {return record;}
+	public String getFrindlyID() {return friendlyID;}
 }
