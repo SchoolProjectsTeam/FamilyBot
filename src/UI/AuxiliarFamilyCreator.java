@@ -18,11 +18,10 @@ public class AuxiliarFamilyCreator extends JFrame {
 	private JTextField inputX;
 	private JTextField inputY;
 	private UiUtil util;
-	private Data data;
 
-	public AuxiliarFamilyCreator(Data data) {
+
+	public AuxiliarFamilyCreator() {
 		initializate();
-		this.data = data;
 	}
 	
 	
@@ -60,6 +59,5 @@ public class AuxiliarFamilyCreator extends JFrame {
 		board.setStart(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));	
 		board.setEnd(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));
 		Family a = new Family(board);
-		data.addFamily(a);
 	}
 }

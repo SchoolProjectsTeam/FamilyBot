@@ -26,7 +26,6 @@ public class MainWindows extends JFrame {
 	private JTextField inputX;
 	private JTextField inputY;
 	private JLabel labelNewBoard;
-	private Data data;
 	private UiUtil util;
 	private JButton btnListaTableros;
 
@@ -35,7 +34,6 @@ public class MainWindows extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWindows() {
-		data = new Data();
 		initComponents();
 		util = new UiUtil();
 		
@@ -84,7 +82,7 @@ public class MainWindows extends JFrame {
 		Family a = new Family(board);
 		map = new Map(board, a);
 		map.setVisible(true);
-		data.addFamily(a);
+
 	}
 	
 
