@@ -53,8 +53,15 @@ public class Map extends JFrame {
 		bots = new JPanel[10];
 		initComponents();
 		dibujarMapa(map);
-		
+		System.out.println("Inicio "+map.startPosition().getX()+" " +map.startPosition().getY() + "\n" + "Fin " + map.getEnd().getX() + " " + map.getEnd().getY());
+		family.runSimulation();
 
+		for(Robot rob : family.getRobots()) {
+			System.out.println("Robot "+ rob.getID()+ "\n" + "Coordenadas :");
+			for(Coordinate coor : rob.getPath()) {
+				System.out.println(coor);
+			}
+		}
 
 
 	}
@@ -88,13 +95,13 @@ public class Map extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				cells[map.startPosition().getX()][map.startPosition().getY()].remove(bots[5]);
 				cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
-				
+
 			}
 
 		});
 
 		buttonsPanel.add(btnAgregarBotSalida, "cell 0 1");
-		
+
 		JButton btnTeststep = new JButton("TestStep");
 		btnTeststep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -103,7 +110,7 @@ public class Map extends JFrame {
 		});
 		buttonsPanel.add(btnTeststep, "cell 0 2");
 	}
-	
+
 
 	public void dibujarMapa(Board map){
 		for(int i = 0; i<map.getX(); i++){
@@ -127,12 +134,13 @@ public class Map extends JFrame {
 					mapPanel.add(panel, "cell" + i + " " + j );
 					cells[i][j]=panel;
 				}
-				
+
 				mapPanel.updateUI();
 			}
 		}	
 		createRobots();
 	}
+
 	public void createRobots(){
 		int auxiliarx = 0;
 		int auxiliary = 0;
@@ -146,7 +154,7 @@ public class Map extends JFrame {
 			bot.setPreferredSize(a);
 			cells[map.startPosition().getX()][map.startPosition().getY()].add(bot, "cell" + auxiliarx +" "+ auxiliary);
 			bots[i] = bot;
-			
+
 			auxiliarx ++;
 			count ++;
 			if(count == 3){
@@ -159,22 +167,28 @@ public class Map extends JFrame {
 		cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
 
 	}
-	
+
+	int countSteps = 0;
+	int countRobots = 0;
 	public void nextStep(){
-		/*int robotNum = 0;
-		for (Robot rob : family.getRobots()){
-			int xPast = rob.getPosition().getX();
-			int yPast = rob.getPosition().getY();
-			if(rob.walkStep()){
-				int nextX = rob.getPath().get(rob.getPath().size()-1).getX();
-				int nextY = rob.getPath().get(rob.getPath().size()-1).getY();
-				cells[xPast][yPast].remove(bots[robotNum]);
-				cells[nextX][nextY].add(bots[robotNum]);
-				System.out.println(robotNum+" "+nextX + " " + nextY + " ");
-			}
-			robotNum++;
+		
+		for (Robot robot : family.getRobots()) {
+
+
+			countRobots++;
+			System.out.println("Robot"+" "+robot.getID()+" "+robot.getPath().get(countSteps));
 		}
-		mapPanel.updateUI();*/
-		family.runSimulation();
+		countSteps++;
+		countRobots = 0;
+		mapPanel.updateUI();
 	}
+
+
+
 }
+
+
+
+
+
+

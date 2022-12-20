@@ -17,5 +17,6 @@ public class Data {
 	
 	public void addFamily(Family a){
 		data.add(a);
+		
 	}
 }

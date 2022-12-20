@@ -30,7 +30,7 @@ public class Family implements Serializable{
 		}
 		record = new SimulationRecord(robots);
 	}    
-	private void walk(){
+	public void walk(){
 		for(Robot rob : robots){
 			boolean repeat = false;
 			do {
@@ -56,24 +56,27 @@ public class Family implements Serializable{
 					return (r1.isWinner()) ? -1 : 1;
 				}
 			}
-		});
+		});		
 		evolve();
+
 	}
 
 	
-	private void evolve(){
-		actualWalk++;
-		charGen.restart();
-		robots.set(6, new Robot(map, generateID(), robots.get(0), robots.get(1)));
-		robots.set(7, new Robot(map, generateID(), robots.get(1), robots.get(2)));
-		robots.set(8, new Robot(map, generateID(), robots.get(2), robots.get(3)));
-		robots.set(9, new Robot(map, generateID(), robots.get(3), robots.get(0)));
-		record.setNewGeneration(robots);
+	
+	private void evolve() {
+
+			robots.set(6, new Robot(map, generateID(), robots.get(0), robots.get(1)));
+			robots.set(7, new Robot(map, generateID(), robots.get(1), robots.get(2)));
+			robots.set(8, new Robot(map, generateID(), robots.get(2), robots.get(3)));
+			robots.set(9, new Robot(map, generateID(), robots.get(3), robots.get(0)));
+			record.setNewGeneration(robots);
+			actualWalk++;
+			charGen.restart();
 	}
 
 	public void runSimulation(){
 		for(int i = 0; i < 50; i++){
-			walk();
+			walk();		
 		}
 	}
 
