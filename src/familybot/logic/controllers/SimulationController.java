@@ -45,8 +45,11 @@ public class SimulationController {
      * Crea una familia nueva, recibe el mapa ya creado, se crea en la interfaz
      * @param map
      */
-    public void createFamily(Board map) {
-    	this.family = new Family(map);
+    public void createFamily(Board map, String name) {
+    	this.family = new Family(map, name);
+    	if(this.families == null) {
+    		families = new ArrayList<Family>();
+    	}
     	families.add(this.family);
     }
     
