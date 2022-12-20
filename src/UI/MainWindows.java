@@ -10,9 +10,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import familybot.logic.controllers.SimulationController;
 import familybot.logic.core.Board;
 import familybot.logic.core.Family;
+<<<<<<< HEAD
 import net.miginfocom.swing.MigLayout;
+=======
+
+import java.awt.Font;
+import java.util.Random;
+import javax.swing.JScrollPane;
+import javax.swing.JMenuBar;
+>>>>>>> refs/heads/Hyzokaaa
 
 public class MainWindows extends JFrame {
 
@@ -21,60 +30,71 @@ public class MainWindows extends JFrame {
 	 */
 	private static final long serialVersionUID = 2736362071613527529L;
 	private JPanel contentPane;
-	private JButton mapButton = new JButton("Lanzar Mapa A");
-	private Map map;
-	private JTextField inputX;
-	private JTextField inputY;
-	private JLabel labelNewBoard;
-	private UiUtil util;
-	private JButton btnListaTableros;
+	private JPanel panel;
+	private JMenuBar menuBar;
+	private JButton btnNewButton;
+	private AuxiliarFamilyCreator auxiliarCreator;
+	private JPanel panel_1;
+	private JScrollPane scrollList;
+	private JButton btnNewButton_1;
+	private JPanel familyList;
 
 
 	/**
 	 * Create the frame.
 	 */
 	public MainWindows() {
+
 		initComponents();
-		util = new UiUtil();
-		
-		mapButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				createNewFamily();
-			}
-		});
 	}
 	
 	
 	
 
 	public void initComponents(){
+		auxiliarCreator = new AuxiliarFamilyCreator();
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 816, 630);
-		contentPane = new JPanel();
-		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[50][50][][][][][][][][][]", "[][][][][][][][][130.00]"));
 		
-		labelNewBoard = new JLabel("Nueva Familia");
-		labelNewBoard.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		contentPane.add(labelNewBoard, "cell 0 0 2 1,alignx center,aligny center");
+		menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
 		
-		btnListaTableros = new JButton("Lista Tableros");
-		btnListaTableros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btnNewButton = new JButton("Crear Nueva Familia");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				auxiliarCreator.setVisible(true);
 			}
 		});
-		contentPane.add(btnListaTableros, "cell 8 0,aligny center");
+		menuBar.add(btnNewButton);
 		
-		inputX = new JTextField();
-		contentPane.add(inputX, "cell 0 1,growx");
-		inputX.setColumns(10);
+		btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		menuBar.add(btnNewButton_1);
+		contentPane = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		inputY = new JTextField();
-		contentPane.add(inputY, "cell 1 1,growx");
-		inputY.setColumns(10);
-		contentPane.add(mapButton, "cell 0 2 2 1,alignx center,aligny center");
+		panel = new JPanel();
+		contentPane.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new MigLayout("", "[212.00,grow][700]", "[grow]"));
+		
+		panel_1 = new JPanel();
+		panel.add(panel_1, "cell 0 0,grow");
+		panel_1.setLayout(new BorderLayout(0, 0));
+		
+		scrollList = new JScrollPane();
+		panel_1.add(scrollList);
+		
+		familyList = new JPanel();
+		scrollList.setViewportView(familyList);
+		familyList.setLayout(new MigLayout("", "[]", "[]"));
 	}
 	
+<<<<<<< HEAD
 	public void createNewFamily(){
 		Board board = new Board(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()));
 		board.setStart(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));	
@@ -82,10 +102,29 @@ public class MainWindows extends JFrame {
 		Family a = new Family(board);
 		map = new Map(board, a);
 		map.setVisible(true);
-
+=======
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainWindows frame = new MainWindows();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
+>>>>>>> refs/heads/Hyzokaaa
 
 
+	public void test() {
+		int i = 0;
+		JButton a = new JButton(("Familia "+ Integer.toString(i)));
+		familyList.add(a, "cell 0"+" " + i);
+		scrollList.updateUI();
+		i++;
+	}
 
 }
