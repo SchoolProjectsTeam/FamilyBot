@@ -1,12 +1,12 @@
 package familybot.logic.controllers;
 
-import familybot.logic.core.Family;
 import java.util.ArrayList;
 
-public interface FileController
-{
+import javax.naming.OperationNotSupportedException;
 
-    public ArrayList<Family> read();
+import familybot.logic.core.Family;
 
-    public void write(ArrayList<Family> array);
+public interface FileController {
+	public ArrayList<Family> read() throws OperationNotSupportedException;
+	public void write(ArrayList<Family> array);
 }
