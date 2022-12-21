@@ -4,12 +4,16 @@
  */
 package familybot.logic.utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rog
  */
-public class CharGenerator {
-    private char character;
+public class CharGenerator implements Serializable{
+
+	private static final long serialVersionUID = -705684604829802059L;
+	private char character;
 
     public CharGenerator(){
         character = 'A';

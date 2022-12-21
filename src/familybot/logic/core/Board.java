@@ -4,17 +4,19 @@
  */
 package familybot.logic.core;
 
-import familybot.logic.exceptions.NotInitializedException;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+
+import familybot.logic.exceptions.NotInitializedException;
 
 /**
  *
  * @author Rog
  */
-public class Board {
+public class Board implements Serializable{
 
+	private static final long serialVersionUID = -1170328998116457244L;
 	private int xSize;
 	private int ySize;
 	private boolean init;
@@ -57,7 +59,7 @@ public class Board {
 	}
 
 	public int maxSteps(){
-		return xSize * ySize / 2;
+		return (xSize * ySize) / 2;
 	}
 
 	public Coordinate makePosition(int x, int y){
