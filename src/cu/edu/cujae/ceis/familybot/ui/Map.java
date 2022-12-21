@@ -167,24 +167,28 @@ public class Map extends JFrame
             numRobot++;
         }
         cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
-
     }
 
+    
+    
     int countSteps = 0;
     int countRobots = 0;
-
+    int countGeneration = 0;
     public void nextStep()
     {
-
-        for (Robot robot : family.getRobots())
-        {
-
+    	if(countSteps<family.getBoard().maxSteps()) {
+        for (Robot robot : family.getRecord().getGeneration(countGeneration))        {
+        	cells[robot.getPath().get(countSteps).getX()][robot.getPath().get(countSteps).getY()].add(bots[countRobots]);
             countRobots++;
             System.out.println("Robot" + " " + robot.getID() + " " + robot.getPath().get(countSteps));
         }
         countSteps++;
         countRobots = 0;
         mapPanel.updateUI();
+    	}
+    	else {
+    		countSteps = 0;
+    	}
     }
 
 }
