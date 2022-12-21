@@ -10,20 +10,24 @@ import java.io.Serializable;
  *
  * @author Rog
  */
-public class CharGenerator implements Serializable{
+public class CharGenerator implements Serializable
+{
 
-	private static final long serialVersionUID = -705684604829802059L;
-	private char character;
+    private static final long serialVersionUID = -705684604829802059L;
+    private char character;
 
-    public CharGenerator(){
+    public CharGenerator()
+    {
         character = 'A';
     }
 
-    public void restart(){
+    public void restart()
+    {
         character = 'A';
     }
 
-    public Character get(){
+    public Character get()
+    {
         return character++;
     }
 }
