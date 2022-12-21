@@ -3,12 +3,18 @@ package familybot.logic.controllers;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
 import familybot.logic.core.Family;
+import familybot.logic.core.Robot;
 
 public class FileControllerSCSV extends AbstractFileController {
+	
+	public FileControllerSCSV() {
+		fileName = "data.csv";
+	}
 
 	@Override
 	public ArrayList<Family> read() throws OperationNotSupportedException{
@@ -23,10 +29,23 @@ public class FileControllerSCSV extends AbstractFileController {
 			for(Family fam : array) {
 				line.append("Nombre de la Familia," + fam.getFrindlyID());
 				csv.write(line.toString());
+				line = new StringBuilder();
 				line.append("Promedio de Pasos," + fam.getRecord().getAverage());
 				csv.write(line.toString());
+				line = new StringBuilder();
 				line.append("Mejor Camino," + fam.getRecord().getLastGeneration().get(0).getMoveRecord());
-				
+				csv.write(line.toString());
+				for(int i = 0; i < 50; i++) {
+					List<Robot> robots = fam.getRecord().getGeneration(i);
+					line = new StringBuilder();
+					line.append("Robot ID, Lista de Pasos");
+					csv.write(line.toString());
+					for(Robot rob : robots) {
+						line = new StringBuilder();
+						line.append(rob.getID() + "," + rob.getMoveRecord());
+						csv.write(line.toString());
+					}
+				}
 			}
 			
 		} catch (IOException e) {
