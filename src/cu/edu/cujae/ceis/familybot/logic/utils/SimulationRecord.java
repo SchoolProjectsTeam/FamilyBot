@@ -51,7 +51,7 @@ public class SimulationRecord implements Serializable{
     }
     
     public List<Direction> getBestPath(){
-    	return generations.get(actualGen).get(0).getMoveRecord();
+    	return generations.get(actualGen).get(50).getMoveRecord();
     }
 
 }

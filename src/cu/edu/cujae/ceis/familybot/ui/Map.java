@@ -4,6 +4,8 @@ import cu.edu.cujae.ceis.familybot.logic.core.Board;
 import cu.edu.cujae.ceis.familybot.logic.core.Coordinate;
 import cu.edu.cujae.ceis.familybot.logic.core.Family;
 import cu.edu.cujae.ceis.familybot.logic.core.Robot;
+import cu.edu.cujae.ceis.familybot.logic.utils.SimulationRecord;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -28,7 +30,9 @@ public class Map extends JFrame
     private Family family;
     private JLabel basicsStats = new JLabel("");
     private JLabel basicsStatsGeneration = new JLabel("");
-
+    private JLabel lblAverage = new JLabel("New label");
+    private JLabel lblName = new JLabel("New label");
+    //private JLabel lblBestPath = new JLabel("New label");   
     /**
      * Create the frame.
      */
@@ -41,7 +45,10 @@ public class Map extends JFrame
         initComponents();
         dibujarMapa(map);
         family.runSimulation();
-
+        
+        lblAverage.setText("Average: "+Float.toString(average()));
+        lblName.setText("Nombre: " + family.getFrindlyID());
+        //lblBestPath.setText(family.getRecord().getGeneration(50).get(0).getPath().toString());
     }
 
     public void initComponents()
@@ -61,7 +68,7 @@ public class Map extends JFrame
 
         JPanel buttonsPanel = new JPanel();
         contentPane.add(buttonsPanel, BorderLayout.EAST);
-        buttonsPanel.setLayout(new MigLayout("", "[grow]", "[][][][][][]"));
+        buttonsPanel.setLayout(new MigLayout("", "[grow]", "[][][][][][][][][][][][][]"));
         
                 JButton btnTeststep = new JButton("Siguiente Paso");
                 btnTeststep.addActionListener(new ActionListener()
@@ -85,6 +92,21 @@ public class Map extends JFrame
                 
 
                 buttonsPanel.add(basicsStatsGeneration, "cell 0 5");
+                
+                JLabel lblNewLabel_1 = new JLabel("Stats:");
+                buttonsPanel.add(lblNewLabel_1, "cell 0 7");
+                
+                
+                buttonsPanel.add(lblName, "cell 0 8");
+                
+                
+                buttonsPanel.add(lblAverage, "cell 0 9");
+                
+             //   JLabel lblNewLabel_2_2 = new JLabel("BestPath");
+               // buttonsPanel.add(lblNewLabel_2_2, "cell 0 11");
+                
+
+               // buttonsPanel.add(lblBestPath, "cell 0 12");
     }
 
     public void dibujarMapa(Board map)
@@ -183,6 +205,16 @@ public class Map extends JFrame
     	}
     	basicsStats.setText("Paso: \n" + countSteps + " - " + family.getBoard().maxSteps());
     	basicsStatsGeneration.setText("Generacion: "+countGeneration);
+    }
+    public float average() {
+    	int a = 0;
+        for(int i= 0;i<50;i++) {
+        	for(Robot rob : family.getRecord().getGeneration(i)) {
+        		a+=rob.getPath().size();
+        	}
+        }
+        float b = (float)a/(10*50);
+        return b;
     }
     
 }
