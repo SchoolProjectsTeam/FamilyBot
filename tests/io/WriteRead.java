@@ -38,10 +38,7 @@ import org.slf4j.LoggerFactory;
  */
 public class WriteRead
 {
-
-    /**
-     * @param args the command line arguments
-     */
+	/*
     public static void main(String[] args)
     {
         FileControllerDAT dat = new FileControllerDAT(FileController.MODE_WRITE);
@@ -70,5 +67,8 @@ public class WriteRead
             logger.error("error de entrada/salida", ex);
         }
     }
+	 */
+
+    
     
 }

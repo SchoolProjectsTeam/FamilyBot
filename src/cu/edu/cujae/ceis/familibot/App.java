@@ -28,48 +28,30 @@ public class App
             }
         });
 
-        SimulationController test = SimulationController.Get();
-        Board map = new Board(8, 8);
-        map.setStart(map.makePosition(0, 0));
-        map.setEnd(map.makePosition(3, 3));
-        test.createFamily(map, "Saved");
-        Family family = test.getFamily();
-        SimulationRecord record = family.getRecord();
-        test.saveFamilies();
-        System.out.println(family.getFrindlyID());
-        System.out.println(test.loadFamilies());
+        // Dirty Testing
+        
         /*
-		List<Robot> robots = record.getGeneration(0);
-    	System.out.println("Generacion 0 : Inicial");
-    	for(Robot rob : robots) {
-    		System.out.println(rob.getID().toString() + " -> " + rob.getMoveRecord());
-    	}
-    	family.runSimulation();
-    	robots = record.getGeneration(0);
-    	System.out.println("Generacion 0 : Leaderboard");
-    	for(Robot rob : robots) {
-    		System.out.println(rob.getID().toString() + " -> " + rob.getMoveRecord());
-    	}
-    	robots = record.getGeneration(1);
-    	System.out.println("Generacion 1 : Leaderboard");
-    	for(Robot rob : robots) {
-    		System.out.println(rob.getID().toString() + " -> " + rob.getMoveRecord());
-    	}
-    	robots = record.getGeneration(2);
-    	System.out.println("Generacion 2 : Leaderboard");
-    	for(Robot rob : robots) {
-    		System.out.println(rob.getID().toString() + " -> " + rob.getMoveRecord());
-    	}
-    	robots = record.getGeneration(3);
-    	System.out.println("Generacion 3 : Leaderboard");
-    	for(Robot rob : robots) {
-    		System.out.println(rob.getID().toString() + " -> " + rob.getMoveRecord());
-    	}
-    	robots = record.getGeneration(50);
-    	System.out.println("Generacion 50 : Leaderboard");
-    	for(Robot rob : robots) {
-    		System.out.println(rob.getID().toString() + " -> " + rob.getMoveRecord());
-    	}
+         SimulationController control = SimulationController.Get();
+        Board[] maps = new Board[3];
+        maps[0] = new Board(4, 4);
+        maps[0].setStart(maps[0].makePosition(0, 0));
+        maps[0].setEnd(maps[0].makePosition(3, 3));
+        maps[1] = new Board(6, 6);
+        maps[1].setStart(maps[1].makePosition(0, 0));
+        maps[1].setEnd(maps[1].makePosition(5, 5));
+        maps[2] = new Board(8, 8);
+        maps[2].setStart(maps[2].makePosition(0, 0));
+        maps[2].setEnd(maps[2].makePosition(5, 5));
+        
+        control.createFamily(maps[0], "Primera");
+        control.getFamily().runSimulation();
+		control.createFamily(maps[1], "Segunda");
+		control.getFamily().runSimulation();
+		control.createFamily(maps[2], "Tercera");
+		control.getFamily().runSimulation();
+		
+		
+		control.printCSV();
          */
 
     }

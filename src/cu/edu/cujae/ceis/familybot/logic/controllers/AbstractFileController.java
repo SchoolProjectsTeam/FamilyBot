@@ -47,7 +47,7 @@ public abstract class AbstractFileController implements FileController
         }
         catch (IOException ex)
         {
-
+        	System.out.println("close");
             MessageBox.showException(ex);
         }
     }
@@ -67,6 +67,7 @@ public abstract class AbstractFileController implements FileController
             }
             catch (IOException e)
             {
+            	System.out.println("requirements");
             }
         }
     }
@@ -82,29 +83,28 @@ public abstract class AbstractFileController implements FileController
     @Override
     public final void reopen(int newMode)
     {
+    	ensureRequirements();
         this.mode = newMode;
         try
         {
-            if ((mode & MODE_READ) == MODE_READ)
-            {
-                if (writer != null)
-                {
-                    writer.close();
-                }
-                reader = new ObjectInputStream(new FileInputStream(file));
-            }
-            else if ((mode & MODE_WRITE) == MODE_WRITE)
-            {
-                if (reader != null)
-                {
-                    reader.close();
-                }
-                writer = new ObjectOutputStream(new FileOutputStream(file));
-            }
+        	switch (mode) {
+			case 1: {
+				if(reader != null)
+					reader.close();
+				reader = new ObjectInputStream(new FileInputStream(file)); break;
+			}
+			case 2: {
+				if(writer != null)
+					writer.close();
+				writer = new ObjectOutputStream(new FileOutputStream(file)); break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + mode);
+			}
         }
         catch (IOException ex)
         {
-            MessageBox.showException(ex);
+            System.out.println("reopen");
         }
     }
 
