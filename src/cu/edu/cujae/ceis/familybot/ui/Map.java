@@ -32,23 +32,12 @@ public class Map extends JFrame
     public Map(Family family)
     {
         this.family = family;
-        this.map = map;
+        this.map = this.family.getBoard();
         cells = new JPanel[map.getX()][map.getY()];
         bots = new JPanel[10];
         initComponents();
         dibujarMapa(map);
-        System.out.println("Inicio " + map.startPosition().getX() + " " + map.startPosition().getY() + "\n" + "Fin "
-                                   + map.getEnd().getX() + " " + map.getEnd().getY());
         family.runSimulation();
-
-        for (Robot rob : family.getRobots())
-        {
-            System.out.println("Robot " + rob.getID() + "\n" + "Coordenadas :");
-            for (Coordinate coor : rob.getPath())
-            {
-                System.out.println(coor);
-            }
-        }
 
     }
 
