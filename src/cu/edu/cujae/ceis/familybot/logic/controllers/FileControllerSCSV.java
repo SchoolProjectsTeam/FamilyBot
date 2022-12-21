@@ -1,4 +1,6 @@
-package familybot.logic.controllers;
+package cu.edu.cujae.ceis.familybot.logic.controllers;
+
+
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,7 +8,9 @@ import java.util.ArrayList;
 
 import javax.naming.OperationNotSupportedException;
 
-import familybot.logic.core.Family;
+import cu.edu.cujae.ceis.familybot.logic.core.Family;
+
+
 
 public class FileControllerSCSV extends AbstractFileController {
 
