@@ -1,4 +1,4 @@
-package familybot.logic.controllers;
+package cu.edu.cujae.ceis.familybot.logic.controllers;
 
 import java.io.File;
 import java.io.FileInputStream;

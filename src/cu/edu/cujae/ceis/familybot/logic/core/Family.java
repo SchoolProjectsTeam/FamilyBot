@@ -1,8 +1,8 @@
-package familybot.logic.core;
+package cu.edu.cujae.ceis.familybot.logic.core;
 
-import familybot.logic.utils.CharGenerator;
-import familybot.logic.utils.ID;
-import familybot.logic.utils.SimulationRecord;
+import cu.edu.cujae.ceis.familybot.logic.utils.CharGenerator;
+import cu.edu.cujae.ceis.familybot.logic.utils.ID;
+import cu.edu.cujae.ceis.familybot.logic.utils.SimulationRecord;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;

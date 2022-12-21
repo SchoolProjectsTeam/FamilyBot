@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package familybot.logic.utils;
+package cu.edu.cujae.ceis.familybot.logic.utils;
 
-import familybot.logic.core.Direction;
+import cu.edu.cujae.ceis.familybot.logic.core.Direction;
 import java.util.Random;
 
 /**

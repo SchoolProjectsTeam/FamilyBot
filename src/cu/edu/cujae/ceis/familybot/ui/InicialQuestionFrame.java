@@ -1,4 +1,4 @@
-package UI;
+package cu.edu.cujae.ceis.familybot.ui;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;

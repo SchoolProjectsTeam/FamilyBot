@@ -1,7 +1,7 @@
-package familybot.logic.core;
+package cu.edu.cujae.ceis.familybot.logic.core;
 
-import familybot.logic.utils.DirectionMaker;
-import familybot.logic.utils.ID;
+import cu.edu.cujae.ceis.familybot.logic.utils.DirectionMaker;
+import cu.edu.cujae.ceis.familybot.logic.utils.ID;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -1,10 +1,10 @@
-package familybot;
+package cu.edu.cujae.ceis.familibot;
 
-import UI.MainWindows;
-import familybot.logic.controllers.SimulationController;
-import familybot.logic.core.Board;
-import familybot.logic.core.Family;
-import familybot.logic.utils.SimulationRecord;
+import cu.edu.cujae.ceis.familybot.ui.MainWindows;
+import cu.edu.cujae.ceis.familybot.logic.controllers.SimulationController;
+import cu.edu.cujae.ceis.familybot.logic.core.Board;
+import cu.edu.cujae.ceis.familybot.logic.core.Family;
+import cu.edu.cujae.ceis.familybot.logic.utils.SimulationRecord;
 import java.awt.EventQueue;
 
 public class App

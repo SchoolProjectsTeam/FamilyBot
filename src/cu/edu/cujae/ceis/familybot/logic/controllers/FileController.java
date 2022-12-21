@@ -1,6 +1,6 @@
-package familybot.logic.controllers;
+package cu.edu.cujae.ceis.familybot.logic.controllers;
 
-import familybot.logic.core.Family;
+import cu.edu.cujae.ceis.familybot.logic.core.Family;
 import java.util.ArrayList;
 
 public interface FileController

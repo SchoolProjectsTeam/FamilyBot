@@ -1,4 +1,4 @@
-package familybot.logic.utils;
+package cu.edu.cujae.ceis.familybot.logic.utils;
 
 import java.io.Serializable;
 

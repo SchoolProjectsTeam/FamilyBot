@@ -1,7 +1,7 @@
-package UI;
+package cu.edu.cujae.ceis.familybot.ui;
 
-import familybot.logic.core.Board;
-import familybot.logic.core.Coordinate;
+import cu.edu.cujae.ceis.familybot.logic.core.Board;
+import cu.edu.cujae.ceis.familybot.logic.core.Coordinate;
 import javax.swing.JPanel;
 
 public class UiUtil

@@ -1,7 +1,7 @@
-package UI;
+package cu.edu.cujae.ceis.familybot.ui;
 
-import familybot.logic.controllers.SimulationController;
-import familybot.logic.core.Family;
+import cu.edu.cujae.ceis.familybot.logic.controllers.SimulationController;
+import cu.edu.cujae.ceis.familybot.logic.core.Family;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;

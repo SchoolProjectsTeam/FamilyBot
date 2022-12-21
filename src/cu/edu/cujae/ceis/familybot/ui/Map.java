@@ -1,9 +1,9 @@
-package UI;
+package cu.edu.cujae.ceis.familybot.ui;
 
-import familybot.logic.core.Board;
-import familybot.logic.core.Coordinate;
-import familybot.logic.core.Family;
-import familybot.logic.core.Robot;
+import cu.edu.cujae.ceis.familybot.logic.core.Board;
+import cu.edu.cujae.ceis.familybot.logic.core.Coordinate;
+import cu.edu.cujae.ceis.familybot.logic.core.Family;
+import cu.edu.cujae.ceis.familybot.logic.core.Robot;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
