@@ -61,7 +61,7 @@ public class MainWindows extends JFrame {
 		btnNewButton_1 = new JButton("Actualizar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				updateFamilystest();
+				updateFamilys();
 			}
 		});
 		menuBar.add(btnNewButton_1);
