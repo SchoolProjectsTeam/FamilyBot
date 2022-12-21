@@ -9,7 +9,6 @@ import cu.edu.cujae.ceis.familybot.logic.core.Direction;
 import cu.edu.cujae.ceis.familybot.logic.core.Robot;
 
 
-
 public class SimulationRecord implements Serializable{
 
 	private static final long serialVersionUID = 7430977851940424785L;

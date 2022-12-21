@@ -6,15 +6,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.naming.OperationNotSupportedException;
+import java.util.List;
 
 import cu.edu.cujae.ceis.familybot.logic.core.Family;
 
+import cu.edu.cujae.ceis.familybot.logic.core.Robot;
 
 
 public class FileControllerSCSV{
-	
+
 	File file;
 
 	public void write(ArrayList<Family> array) {
@@ -24,12 +24,25 @@ public class FileControllerSCSV{
 			for(Family fam : array) {
 				line.append("Nombre de la Familia," + fam.getFrindlyID());
 				csv.write(line.toString());
+				line = new StringBuilder();
 				line.append("Promedio de Pasos," + fam.getRecord().getAverage());
 				csv.write(line.toString());
+				line = new StringBuilder();
 				line.append("Mejor Camino," + fam.getRecord().getLastGeneration().get(0).getMoveRecord());
-				
+				csv.write(line.toString());
+				for(int i = 0; i < 50; i++) {
+					List<Robot> robots = fam.getRecord().getGeneration(i);
+					line = new StringBuilder();
+					line.append("Robot ID, Lista de Pasos");
+					csv.write(line.toString());
+					for(Robot rob : robots) {
+						line = new StringBuilder();
+						line.append(rob.getID() + "," + rob.getMoveRecord());
+						csv.write(line.toString());
+					}
+				}
 			}
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
