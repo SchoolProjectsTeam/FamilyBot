@@ -1,14 +1,10 @@
 package cu.edu.cujae.ceis.familybot.logic.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cu.edu.cujae.ceis.familybot.logic.core.Board;
 import cu.edu.cujae.ceis.familybot.logic.core.Family;
-import cu.edu.cujae.ceis.familybot.ui.utils.MessageBox;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class SimulationController
 {
@@ -33,7 +29,7 @@ public class SimulationController
     
     public SimulationController()
     {
-        files = new FileControllerDAT(FileController.MODE_READ);
+        files = new FileControllerDAT();
     }
 
     /**
@@ -78,16 +74,7 @@ public class SimulationController
     @SuppressWarnings ("unchecked")
     public ArrayList<Family> loadFamilies()
     {
-        files.reopen(FileController.MODE_READ);
-        List<Family> read = new LinkedList<>();
-        try
-        {
-            read = files.read();
-        }
-        catch (IOException | ClassNotFoundException ex)
-        {
-            MessageBox.showException(ex);
-        }
+        List<Family> read = files.read();
         
         families = new ArrayList<>(read);
         
@@ -103,14 +90,11 @@ public class SimulationController
      */
     public void saveFamilies()
     {
-        files.reopen(FileController.MODE_WRITE);
-        try
-        {
-            files.write(families);
-        }
-        catch (IOException ex)
-        {
-            MessageBox.showException(ex);
-        }
+    	files.write(families);
+    }
+    
+    public void printCSV() {
+    	FileControllerSCSV csv = new FileControllerSCSV();
+    	csv.write(families);
     }
 }

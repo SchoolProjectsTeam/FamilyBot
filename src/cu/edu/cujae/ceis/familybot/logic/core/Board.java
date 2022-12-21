@@ -49,6 +49,9 @@ public class Board implements Serializable
 
     public void addBlocked(Coordinate pos)
     {
+    	if(start.equals(pos) || end.equals(pos)){
+    		throw new IllegalArgumentException();
+    	}
         blocked.add(pos);
     }
 

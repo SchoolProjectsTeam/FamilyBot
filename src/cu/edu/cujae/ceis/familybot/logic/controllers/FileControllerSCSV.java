@@ -15,30 +15,41 @@ import cu.edu.cujae.ceis.familybot.logic.core.Robot;
 
 public class FileControllerSCSV{
 
-	File file;
+	private final String path = PathConstants.APP_DIRECTORY.getAbsolutePath();;
+    private final String fileName = "data.csv";
+    private File file;
+    
+    public FileControllerSCSV() {
+    	file = new File(PathConstants.APP_DIRECTORY, fileName);
+    }
 
 	public void write(ArrayList<Family> array) {
 		try {
 			FileWriter csv = new FileWriter(file);
 			StringBuilder line = new StringBuilder();
 			for(Family fam : array) {
-				line.append("Nombre de la Familia," + fam.getFrindlyID());
+				line.append("Nombre de la Familia," + fam.getFrindlyID() + "\n");
 				csv.write(line.toString());
 				line = new StringBuilder();
-				line.append("Promedio de Pasos," + fam.getRecord().getAverage());
+				line.append("Promedio de Pasos," + fam.getRecord().getAverage() + "\n");
 				csv.write(line.toString());
 				line = new StringBuilder();
-				line.append("Mejor Camino," + fam.getRecord().getLastGeneration().get(0).getMoveRecord());
+				line.append("Mejor Camino," + fam.getRecord().getLastGeneration().get(0).getMoveRecord() + "\n");
 				csv.write(line.toString());
 				for(int i = 0; i < 50; i++) {
 					List<Robot> robots = fam.getRecord().getGeneration(i);
-					line = new StringBuilder();
-					line.append("Robot ID, Lista de Pasos");
-					csv.write(line.toString());
-					for(Robot rob : robots) {
+					if(robots != null) {
 						line = new StringBuilder();
-						line.append(rob.getID() + "," + rob.getMoveRecord());
+						line.append("Generación,"  + i + "\n");
 						csv.write(line.toString());
+						line = new StringBuilder();
+						line.append("Robot ID, Lista de Pasos"  + "\n");
+						csv.write(line.toString());
+						for(Robot rob : robots) {
+							line = new StringBuilder();
+							line.append(rob.getID() + "," + rob.getMoveRecord() + "\n");
+							csv.write(line.toString());
+						}
 					}
 				}
 			}

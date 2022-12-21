@@ -33,7 +33,7 @@ public class SimulationRecord implements Serializable{
     }
     
     public List<Robot> getLastGeneration(){
-    	return generations.get(actualGen);
+    	return generations.get(actualGen - 1);
     }
     
     public int getAverage() {
@@ -47,11 +47,11 @@ public class SimulationRecord implements Serializable{
     		}
     		average /= i * 10;
     	}
-    	return average;
+    	return average - 1;
     }
     
     public List<Direction> getBestPath(){
-    	return generations.get(actualGen).get(50).getMoveRecord();
+    	return generations.get(actualGen - 1).get(0).getMoveRecord();
     }
 
 }

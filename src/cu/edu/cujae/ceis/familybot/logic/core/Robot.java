@@ -24,6 +24,7 @@ public class Robot implements Cloneable, Serializable
         this.id = id;
         position = map.startPosition();
         path = new LinkedList<Coordinate>();
+        path.clear();
         path.add((Coordinate) position.clone());
         movements = new LinkedList<>();
         for (int i = 0; i < map.maxSteps(); i++)
@@ -43,7 +44,8 @@ public class Robot implements Cloneable, Serializable
         position = map.startPosition();
         this.id = id;
         path = new LinkedList<Coordinate>();
-        path.add(position);
+        path.clear();
+        path.add((Coordinate) position.clone());
         movements = new LinkedList<Direction>();
         for (int i = 0; i < map.maxSteps(); i++)
         {
@@ -71,7 +73,6 @@ public class Robot implements Cloneable, Serializable
 
     public boolean walkStep()
     {
-        Coordinate pastPosition = (Coordinate) position.clone();
         Direction next = movements.poll();
         if (next == null)
         {
@@ -79,8 +80,10 @@ public class Robot implements Cloneable, Serializable
         }
         else
         {
-            position.translate(next);
-            path.add((Coordinate) position.clone());
+        	if(!ended) {
+        		position.translate(next);
+        	}
+        	path.add((Coordinate) position.clone());
         }
         return true;
     }

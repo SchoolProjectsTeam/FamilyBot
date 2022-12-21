@@ -47,12 +47,10 @@ public class Family implements Serializable
                 {
                     rob.setWinner();
                 }
-                else
-                {
-                    repeat = rob.walkStep();
-                }
+                repeat = rob.walkStep();
+                
             }
-            while (!rob.isWinner() && repeat);
+            while (repeat);
         }
         robots.sort(new Comparator<Robot>()
         {
@@ -74,7 +72,9 @@ public class Family implements Serializable
                 }
             }
         });
-        evolve();
+        if(actualWalk < 50) {
+        	evolve();
+        }
     }
 
     private void evolve()

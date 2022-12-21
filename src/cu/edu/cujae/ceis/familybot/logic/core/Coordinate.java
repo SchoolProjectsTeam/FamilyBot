@@ -67,8 +67,8 @@ public class Coordinate implements Serializable
 
     public void restart()
     {
-        this.x = board.startPosition().getX();
-        this.y = board.startPosition().getY();
+        this.x = new Integer(board.startPosition().getX());
+        this.y = new Integer(board.startPosition().getY());
     }
 
     public Integer getX()
@@ -91,7 +91,11 @@ public class Coordinate implements Serializable
     public boolean equals(Object obj)
     {
         Coordinate comparable = (Coordinate) obj;
-        return (this.getX() == comparable.getX() && this.getY() == comparable.getY());
+        return (this.getX().equals(comparable.getX()) && this.getY().equals(comparable.getY()));
+    }
+    
+    public void camparate(Coordinate obj) {
+    	return;
     }
 
     @Override

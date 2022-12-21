@@ -103,7 +103,7 @@ public class MainWindows extends JFrame {
 		int i = 0;
 		familyList.removeAll();
 		for (Family family : SimulationController.Get().loadFamilies()) {
-			JButton a = new JButton(i + " " + family.getFrindlyID());
+			JButton a = new JButton(i + " - " + family.getFrindlyID());
 			familyList.add(a, "cell 0" + " " + i);
 			i++;
 			a.addActionListener(new ActionListener() {
