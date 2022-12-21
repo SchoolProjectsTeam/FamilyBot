@@ -47,19 +47,22 @@ public class SimulationController {
      */
     public void createFamily(Board map, String name) {
     	this.family = new Family(map, name);
-    	if(this.families == null) {
-    		families = new ArrayList<Family>();
-    	}
+    	loadFamilies();
     	families.add(this.family);
+    	saveFamilies();
     }
     
     /**
      * Devuelve un clon del arreglo de familias guardado en el archivo, los cambios hechos a este arreglo no se aplican a los originales, su objetivo es solo obtener el indice de dichas familias
      * @return ArrayList de Familias
      */
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public ArrayList<Family> loadFamilies() {
-    	return (ArrayList<Family>) files.read().clone();
+    	families = (ArrayList<Family>) files.read();
+    	if(families == null) {
+    		families = new ArrayList<Family>();
+    	}
+    	return (ArrayList<Family>)families.clone();
     }
     
     /**

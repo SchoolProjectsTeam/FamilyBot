@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import familybot.logic.core.Family;
 
 class FileControllerDAT extends AbstractFileController{
-	
+
 	public FileControllerDAT() {
 		super();
 	}
@@ -18,10 +18,20 @@ class FileControllerDAT extends AbstractFileController{
 		ArrayList<Family> content = null;
 		
 		try {
-			content = (ArrayList<Family>)reader.readObject();
+			System.out.println("Bytes : " + reader.available());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		try {
+			if(reader.available() > 0) {
+				content = (ArrayList<Family>)reader.readObject();
+			}
 		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			content = null;
 		}
 
 		return content;
@@ -32,6 +42,7 @@ class FileControllerDAT extends AbstractFileController{
 		ensureRequirements();
 		try {
 			writer.writeObject(array);
+			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
