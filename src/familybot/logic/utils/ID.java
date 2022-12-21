@@ -1,13 +1,16 @@
 
 package familybot.logic.utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rog
  */
-public class ID {
+public class ID implements Serializable {
     
-    private char id; 
+	private static final long serialVersionUID = 3058474088062357084L;
+	private char id; 
     private int generation;
 
     public ID(char id, int generation){
