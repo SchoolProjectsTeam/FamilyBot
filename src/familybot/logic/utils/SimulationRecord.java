@@ -32,6 +32,10 @@ public class SimulationRecord implements Serializable{
         return generations.get(generation);
     }
     
+    public List<Robot> getLastGeneration(){
+    	return generations.get(actualGen);
+    }
+    
     public int getAverage() {
     	if(average == 0) {
     		int i;
