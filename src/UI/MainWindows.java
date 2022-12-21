@@ -18,6 +18,7 @@ import familybot.logic.core.Family;
 
 import net.miginfocom.swing.MigLayout;
 
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JScrollPane;
 import javax.swing.JMenuBar;
@@ -109,7 +110,8 @@ public class MainWindows extends JFrame {
 
 	private void updateFamilys() {
 		int i = 0;
-		for (Family family : SimulationController.Get().loadFamilies()) {
+		ArrayList<Family> families = SimulationController.Get().loadFamilies();
+		for (Family family : families) {
 			JButton a = new JButton(family.getFrindlyID());
 			familyList.add(a, "cell 0" + " " + i);
 			i++;

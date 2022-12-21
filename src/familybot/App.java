@@ -33,6 +33,7 @@ public class App {
     	SimulationRecord record = family.getRecord();
     	test.saveFamilies();
     	System.out.println(family.getFrindlyID());
+    	System.out.println(test.loadFamilies());
     	/*
 		List<Robot> robots = record.getGeneration(0);
     	System.out.println("Generacion 0 : Inicial");
