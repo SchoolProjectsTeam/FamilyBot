@@ -11,12 +11,16 @@ import java.util.Random;
  *
  * @author Rog
  */
-public class DirectionMaker {
+public class DirectionMaker
+{
+
     private static Random generator = new Random();
 
-    public static Direction get() {
+    public static Direction get()
+    {
         Direction result;
-        switch (generator.nextInt(4)) {
+        switch (generator.nextInt(4))
+        {
             case 0:
                 result = Direction.Down;
                 break;
@@ -37,7 +41,8 @@ public class DirectionMaker {
         return result;
     }
 
-    public static Direction get(Direction one, Direction two) {
+    public static Direction get(Direction one, Direction two)
+    {
         return (generator.nextInt() % 2 == 0) ? one : two;
     }
 }

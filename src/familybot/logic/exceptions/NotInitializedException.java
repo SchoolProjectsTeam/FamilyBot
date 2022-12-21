@@ -8,13 +8,16 @@ package familybot.logic.exceptions;
  *
  * @author Rog
  */
-public class NotInitializedException extends RuntimeException {
-    
-    public NotInitializedException(){
+public class NotInitializedException extends RuntimeException
+{
+
+    public NotInitializedException()
+    {
         super();
     }
-    
-    public NotInitializedException(String s){
+
+    public NotInitializedException(String s)
+    {
         super(s);
     }
 }

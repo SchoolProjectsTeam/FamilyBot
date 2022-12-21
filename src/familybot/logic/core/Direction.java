@@ -8,6 +8,7 @@ package familybot.logic.core;
  *
  * @author Rog
  */
-public enum Direction {
+public enum Direction
+{
     Up, Down, Left, Right;
 }
