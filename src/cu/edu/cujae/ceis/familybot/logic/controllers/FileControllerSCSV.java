@@ -1,28 +1,23 @@
 package cu.edu.cujae.ceis.familybot.logic.controllers;
 
+
+
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.OperationNotSupportedException;
-
 import cu.edu.cujae.ceis.familybot.logic.core.Family;
+
 import cu.edu.cujae.ceis.familybot.logic.core.Robot;
 
-public class FileControllerSCSV extends AbstractFileController {
-	
-	public FileControllerSCSV() {
-		fileName = "data.csv";
-	}
 
-	@Override
-	public ArrayList<Family> read() throws OperationNotSupportedException{
-		throw new OperationNotSupportedException("Can't read a .csv file.");
-	}
+public class FileControllerSCSV{
 
-	@Override
-	public void write(ArrayList<cu.edu.cujae.ceis.familybot.logic.core.Family> array) {
+	File file;
+
+	public void write(ArrayList<Family> array) {
 		try {
 			FileWriter csv = new FileWriter(file);
 			StringBuilder line = new StringBuilder();
@@ -47,7 +42,7 @@ public class FileControllerSCSV extends AbstractFileController {
 					}
 				}
 			}
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

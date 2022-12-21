@@ -3,62 +3,41 @@ package cu.edu.cujae.ceis.familybot.logic.controllers;
 import cu.edu.cujae.ceis.familybot.logic.core.Family;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-class FileControllerDAT extends AbstractFileController
+public class FileControllerDAT extends AbstractFileController
 {
 
-    public FileControllerDAT()
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileControllerDAT.class);
+
+    public FileControllerDAT(int mode)
     {
-        super();
+        super(mode);
     }
 
-    @SuppressWarnings ("unchecked")
     @Override
-    public ArrayList<Family> read()
+    public List<Family> read() throws IOException, ClassNotFoundException
     {
         ensureRequirements();
-        ArrayList<Family> content = null;
-
-        try
-        {
-            System.out.println("Bytes : " + reader.available());
-        }
-        catch (IOException e1)
-        {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-
-        try
-        {
-            if (reader.available() > 0)
-            {
-                content = (ArrayList<Family>) reader.readObject();
-            }
-        }
-        catch (ClassNotFoundException | IOException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            content = null;
-        }
+        reopen(MODE_READ);
+        @SuppressWarnings ("unchecked")
+        ArrayList<Family> content = (ArrayList<Family>) getReader().readObject();
+        close();
 
         return content;
     }
 
     @Override
-    public void write(ArrayList<Family> array)
+    public void write(List<Family> array) throws IOException
     {
         ensureRequirements();
-        try
-        {
-            writer.writeObject(array);
-            writer.close();
-        }
-        catch (IOException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        reopen(MODE_WRITE);
+
+        ArrayList<Family> clone = new ArrayList<>(array);
+        getWriter().writeObject(clone);
+
+        close();
     }
 }

@@ -1,11 +1,13 @@
 package cu.edu.cujae.ceis.familybot.logic.utils;
 
-import cu.edu.cujae.ceis.familybot.logic.core.Direction;
-import cu.edu.cujae.ceis.familybot.logic.core.Robot;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import cu.edu.cujae.ceis.familybot.logic.core.Direction;
+import cu.edu.cujae.ceis.familybot.logic.core.Robot;
+
 
 public class SimulationRecord implements Serializable{
 
