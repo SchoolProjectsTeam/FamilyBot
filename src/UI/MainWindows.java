@@ -109,10 +109,17 @@ public class MainWindows extends JFrame {
 
 	private void updateFamilys() {
 		int i = 0;
+		familyList.removeAll();
 		for (Family family : SimulationController.Get().loadFamilies()) {
-			JButton a = new JButton(family.getFrindlyID());
+			JButton a = new JButton(i + " " + family.getFrindlyID());
 			familyList.add(a, "cell 0" + " " + i);
 			i++;
+			a.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Map map = new Map(family);
+					map.setVisible(true);
+				}
+			});
 		}
 		contentPane.updateUI();
 	}
