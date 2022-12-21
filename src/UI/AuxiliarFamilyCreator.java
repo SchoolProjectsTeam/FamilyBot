@@ -12,17 +12,23 @@ import familybot.logic.core.Family;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AuxiliarFamilyCreator extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField inputX;
 	private JTextField inputY;
+	
 	private UiUtil util;
+	private JTextField textName;
 
 
 	public AuxiliarFamilyCreator() {
 		initializate();
+		util = new UiUtil();
 	}
 	
 	
@@ -34,7 +40,7 @@ public class AuxiliarFamilyCreator extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[][83.00][35.00,grow][]", "[][]"));
+		contentPane.setLayout(new MigLayout("", "[grow][83.00][35.00,grow][]", "[40][40][40][grow]"));
 		
 		JLabel lblText = new JLabel("Introduzca la dimensi\u00F3n del tablero");
 		contentPane.add(lblText, "cell 0 0");
@@ -52,13 +58,31 @@ public class AuxiliarFamilyCreator extends JFrame {
 		inputY = new JTextField();
 		inputY.setColumns(10);
 		contentPane.add(inputY, "cell 2 1,growx");
+		
+		JLabel lblIntroduzcaElNombre = new JLabel("Introduzca el nombre de la familia");
+		contentPane.add(lblIntroduzcaElNombre, "cell 0 2");
+		
+		textName = new JTextField();
+		textName.setColumns(10);
+		contentPane.add(textName, "cell 1 2 2 1,growx");
+		
+		JPanel panel = new JPanel();
+		contentPane.add(panel, "cell 0 3 4 1,grow");
+		
+		JButton btnNewButton = new JButton("Generar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createNewFamily();
+				setVisible(false);
+			}
+		});
+		panel.add(btnNewButton);
 		setLocationRelativeTo(null);
 	}
 	public void createNewFamily(){
 		Board board = new Board(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()));
 		board.setStart(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));	
 		board.setEnd(util.generateRandomCoordinate(Integer.parseInt(inputX.getText()), Integer.parseInt(inputY.getText()), board));
-		Family a = new Family(board, "");//pendiente
-		SimulationController.Get().loadFamilies().add(a);
+		SimulationController.Get().createFamily(board, textName.getText());
 	}
 }

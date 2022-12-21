@@ -35,8 +35,8 @@ public class MainWindows extends JFrame {
 	private AuxiliarFamilyCreator auxiliarCreator;
 	private JPanel panel_1;
 	private JScrollPane scrollList;
-	private JButton btnNewButton_1;
 	private JPanel familyList;
+	private JButton btnNewButton_1;
 
 
 	/**
@@ -67,9 +67,10 @@ public class MainWindows extends JFrame {
 		});
 		menuBar.add(btnNewButton);
 		
-		btnNewButton_1 = new JButton("New button");
+		btnNewButton_1 = new JButton("Actualizar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				updateFamilys();
 			}
 		});
 		menuBar.add(btnNewButton_1);
@@ -79,7 +80,7 @@ public class MainWindows extends JFrame {
 		
 		panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[212.00,grow][700]", "[grow]"));
+		panel.setLayout(new MigLayout("", "[528.00,grow]", "[grow]"));
 		
 		panel_1 = new JPanel();
 		panel.add(panel_1, "cell 0 0,grow");
@@ -106,6 +107,15 @@ public class MainWindows extends JFrame {
 		});
 	}
 
+	private void updateFamilys() {
+		int i = 0;
+		for (Family family : SimulationController.Get().loadFamilies()) {
+			JButton a = new JButton(family.getFrindlyID());
+			familyList.add(a, "cell 0" + " " + i);
+			i++;
+		}
+		contentPane.updateUI();
+	}
 
 
 	public void test() {
