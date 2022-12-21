@@ -48,7 +48,7 @@ public class Map extends JFrame {
 	 */
 	public Map(Family family) {
 		this.family = family;
-		this.map = map;
+		this.map = family.getBoard();
 		cells = new JPanel [map.getX()][map.getY()];
 		bots = new JPanel[10];
 		initComponents();
@@ -89,18 +89,6 @@ public class Map extends JFrame {
 			}
 		});
 		buttonsPanel.add(btnCorrerSimulacion, "cell 0 0");
-
-		JButton btnAgregarBotSalida = new JButton("Borrar Bot 5");
-		btnAgregarBotSalida.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				cells[map.startPosition().getX()][map.startPosition().getY()].remove(bots[5]);
-				cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
-
-			}
-
-		});
-
-		buttonsPanel.add(btnAgregarBotSalida, "cell 0 1");
 
 		JButton btnTeststep = new JButton("TestStep");
 		btnTeststep.addActionListener(new ActionListener() {
@@ -167,20 +155,21 @@ public class Map extends JFrame {
 		cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
 
 	}
-
+	int generationSelected = 0;
 	int countSteps = 0;
-	int countRobots = 0;
+	
 	public void nextStep(){
-		
-		for (Robot robot : family.getRobots()) {
-
-
-			countRobots++;
+		if(countSteps < family.getBoard().maxSteps()) {
+		for (Robot robot : family.getRecord().getGeneration(generationSelected)) {
 			System.out.println("Robot"+" "+robot.getID()+" "+robot.getPath().get(countSteps));
 		}
 		countSteps++;
-		countRobots = 0;
 		mapPanel.updateUI();
+		}
+		else {
+			countSteps = 0;
+			nextStep();
+		}
 	}
 
 

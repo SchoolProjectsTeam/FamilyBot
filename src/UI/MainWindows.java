@@ -70,7 +70,7 @@ public class MainWindows extends JFrame {
 		btnNewButton_1 = new JButton("Actualizar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				updateFamilys();
+				updateFamilystest();
 			}
 		});
 		menuBar.add(btnNewButton_1);
@@ -118,6 +118,21 @@ public class MainWindows extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					Map map = new Map(family);
 					map.setVisible(true);
+				}
+			});
+		}
+		contentPane.updateUI();
+	}
+	private void updateFamilystest() {
+		int i = 0;
+		familyList.removeAll();
+		for (int j = 0; j<10;j++) {
+			JButton a = new JButton(i + " " );
+			familyList.add(a, "cell 0" + " " + i);
+			i++;
+			a.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.out.println("no fue en vano bro");
 				}
 			});
 		}
