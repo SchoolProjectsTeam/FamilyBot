@@ -1,4 +1,4 @@
-package familybot.logic.controllers;
+package cu.edu.cujae.ceis.familybot.logic.controllers;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
-import familybot.logic.core.Family;
-import familybot.logic.core.Robot;
+import cu.edu.cujae.ceis.familybot.logic.core.Family;
+import cu.edu.cujae.ceis.familybot.logic.core.Robot;
 
 public class FileControllerSCSV extends AbstractFileController {
 	
@@ -22,7 +22,7 @@ public class FileControllerSCSV extends AbstractFileController {
 	}
 
 	@Override
-	public void write(ArrayList<Family> array) {
+	public void write(ArrayList<cu.edu.cujae.ceis.familybot.logic.core.Family> array) {
 		try {
 			FileWriter csv = new FileWriter(file);
 			StringBuilder line = new StringBuilder();

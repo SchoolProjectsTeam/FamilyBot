@@ -87,4 +87,9 @@ public class SimulationController
     {
         files.write(families);
     }
+    
+    public void printCSV() {
+    	FileControllerSCSV csv = new FileControllerSCSV();
+    	csv.write(families);
+    }
 }
