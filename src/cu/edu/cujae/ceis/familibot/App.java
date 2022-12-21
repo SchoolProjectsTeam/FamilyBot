@@ -1,33 +1,46 @@
 package cu.edu.cujae.ceis.familibot;
 
-import cu.edu.cujae.ceis.familybot.ui.MainWindows;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
 import cu.edu.cujae.ceis.familybot.logic.controllers.SimulationController;
 import cu.edu.cujae.ceis.familybot.logic.core.Board;
 import cu.edu.cujae.ceis.familybot.logic.core.Family;
 import cu.edu.cujae.ceis.familybot.logic.utils.SimulationRecord;
+import cu.edu.cujae.ceis.familybot.ui.MainWindows;
 import java.awt.EventQueue;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class App
 {
-
+    
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    
     public static void main(String[] args)
     {
-        EventQueue.invokeLater(new Runnable()
+        try
         {
-            public void run()
+            UIManager.setLookAndFeel(new FlatAtomOneDarkIJTheme());
+        }
+        catch (UnsupportedLookAndFeelException ex)
+        {
+            LOGGER.error("no pudo aplicarse el look and feel", ex);
+        }
+        
+        EventQueue.invokeLater(() -> 
+        {
+            try
             {
-                try
-                {
-                    MainWindows frame = new MainWindows();
-                    frame.setVisible(true);
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+                MainWindows frame = new MainWindows();
+                frame.setVisible(true);
+            }
+            catch (Exception e)
+            {
+                LOGGER.error("no se pudo iniciar la app", e);
             }
         });
-
+        
         SimulationController test = SimulationController.Get();
         Board map = new Board(8, 8);
         map.setStart(map.makePosition(0, 0));
@@ -71,7 +84,7 @@ public class App
     		System.out.println(rob.getID().toString() + " -> " + rob.getMoveRecord());
     	}
          */
-
+        
     }
-
+    
 }
