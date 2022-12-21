@@ -30,7 +30,8 @@ public class App
 
         // Dirty Testing
         
-        SimulationController control = SimulationController.Get();
+        /*
+         SimulationController control = SimulationController.Get();
         Board[] maps = new Board[3];
         maps[0] = new Board(4, 4);
         maps[0].setStart(maps[0].makePosition(0, 0));
@@ -51,6 +52,7 @@ public class App
 		
 		
 		control.printCSV();
+         */
 
     }
 
