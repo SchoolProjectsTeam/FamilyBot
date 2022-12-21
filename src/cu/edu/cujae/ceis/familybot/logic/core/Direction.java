@@ -1,0 +1,14 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
+ */
+package cu.edu.cujae.ceis.familybot.logic.core;
+
+/**
+ *
+ * @author Rog
+ */
+public enum Direction
+{
+    Up, Down, Left, Right;
+}
