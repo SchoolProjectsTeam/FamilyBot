@@ -67,23 +67,9 @@ public class Map extends JFrame
             {
             }
         });
-        buttonsPanel.add(btnCorrerSimulacion, "cell 0 0");
+        buttonsPanel.add(btnCorrerSimulacion, "cell 0 0,alignx center");
 
-        JButton btnAgregarBotSalida = new JButton("Borrar Bot 5");
-        btnAgregarBotSalida.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent arg0)
-            {
-                cells[map.startPosition().getX()][map.startPosition().getY()].remove(bots[5]);
-                cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
-
-            }
-
-        });
-
-        buttonsPanel.add(btnAgregarBotSalida, "cell 0 1");
-
-        JButton btnTeststep = new JButton("TestStep");
+        JButton btnTeststep = new JButton("Siguiente Paso");
         btnTeststep.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent arg0)
@@ -91,7 +77,7 @@ public class Map extends JFrame
                 nextStep();
             }
         });
-        buttonsPanel.add(btnTeststep, "cell 0 2");
+        buttonsPanel.add(btnTeststep, "cell 0 2,growx");
     }
 
     public void dibujarMapa(Board map)
