@@ -162,7 +162,7 @@ public class Map extends JFrame
     public void nextStep()
     {
     	if(!(textGeneration.getText().length() == 0)){
-    	countGeneration = Integer.parseInt(textGeneration.getText()) ;
+    	countGeneration = Integer.parseInt(textGeneration.getText());
     	}
     	else {
     		countGeneration = 0;
