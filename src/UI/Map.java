@@ -31,6 +31,7 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 
 
@@ -81,22 +82,29 @@ public class Map extends JFrame {
 
 		JPanel buttonsPanel = new JPanel();
 		contentPane.add(buttonsPanel, BorderLayout.EAST);
-		buttonsPanel.setLayout(new MigLayout("", "[]", "[][][]"));
-
-		JButton btnCorrerSimulacion = new JButton("Correr Simulacion");
-		btnCorrerSimulacion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		buttonsPanel.add(btnCorrerSimulacion, "cell 0 0");
-
-		JButton btnTeststep = new JButton("TestStep");
-		btnTeststep.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				nextStep();
-			}
-		});
-		buttonsPanel.add(btnTeststep, "cell 0 2");
+		buttonsPanel.setLayout(new MigLayout("", "[grow]", "[][][][][]"));
+						
+						JLabel lblNewLabel = new JLabel("Seleccione la generaci\u00F3n que desea evaluar");
+						buttonsPanel.add(lblNewLabel, "cell 0 0 1 2");
+				
+						JButton btnNextStep = new JButton("Siguiente paso");
+						btnNextStep.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent arg0) {
+								nextStep();
+							}
+						});
+						
+								JButton btnCorrerSimulacion = new JButton("Correr Simulacion");
+								btnCorrerSimulacion.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent arg0) {
+									}
+								});
+								
+								textField = new JTextField();
+								buttonsPanel.add(textField, "cell 0 2,growx");
+								textField.setColumns(10);
+								buttonsPanel.add(btnCorrerSimulacion, "cell 0 3,alignx center");
+						buttonsPanel.add(btnNextStep, "cell 0 4,alignx center");
 	}
 
 
@@ -155,16 +163,21 @@ public class Map extends JFrame {
 		cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
 
 	}
+	
 	int generationSelected = 0;
 	int countSteps = 0;
-	
+	int countBots = 0;
+	private JTextField textField;
 	public void nextStep(){
 		if(countSteps < family.getBoard().maxSteps()) {
 		for (Robot robot : family.getRecord().getGeneration(generationSelected)) {
+			cells[robot.getPath().get(countSteps).getX()][robot.getPath().get(countSteps).getY()].add(bots[countBots]);
 			System.out.println("Robot"+" "+robot.getID()+" "+robot.getPath().get(countSteps));
+			countBots++;
 		}
 		countSteps++;
 		mapPanel.updateUI();
+		countBots = 0;
 		}
 		else {
 			countSteps = 0;

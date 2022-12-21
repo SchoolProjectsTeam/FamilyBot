@@ -91,7 +91,7 @@ public class MainWindows extends JFrame {
 		
 		familyList = new JPanel();
 		scrollList.setViewportView(familyList);
-		familyList.setLayout(new MigLayout("", "[]", "[]"));
+		familyList.setLayout(new MigLayout("", "[131.00]", "[]"));
 	}
 	
 	public static void main(String[] args) {
@@ -132,7 +132,7 @@ public class MainWindows extends JFrame {
 			i++;
 			a.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("no fue en vano bro");
+					System.out.println("no fue en vano bro" );
 				}
 			});
 		}
