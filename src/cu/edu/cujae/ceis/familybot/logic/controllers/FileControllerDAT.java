@@ -10,8 +10,6 @@ import org.slf4j.LoggerFactory;
 public class FileControllerDAT extends AbstractFileController
 {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FileControllerDAT.class);
-
     public FileControllerDAT(int mode)
     {
         super(mode);

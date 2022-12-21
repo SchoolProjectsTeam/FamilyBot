@@ -12,8 +12,6 @@ import org.slf4j.LoggerFactory;
 
 public class SimulationController
 {
-
-    private static Logger LOGGER = LoggerFactory.getLogger(SimulationController.class);
     
     private static SimulationController instance;
     
@@ -88,7 +86,6 @@ public class SimulationController
         }
         catch (IOException | ClassNotFoundException ex)
         {
-            LOGGER.error("", ex);
             MessageBox.showException(ex);
         }
         
@@ -113,7 +110,6 @@ public class SimulationController
         }
         catch (IOException ex)
         {
-            LOGGER.error("", ex);
             MessageBox.showException(ex);
         }
     }

@@ -1,21 +1,17 @@
 package cu.edu.cujae.ceis.familybot.logic.controllers;
 
-import cu.edu.cujae.ceis.familybot.ui.utils.MessageBox;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import static cu.edu.cujae.ceis.familybot.logic.controllers.FileController.MODE_READ;
+import cu.edu.cujae.ceis.familybot.ui.utils.MessageBox;
 
 public abstract class AbstractFileController implements FileController
 {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractFileController.class);
 
     private final String path;
     private final String fileName;
@@ -51,7 +47,7 @@ public abstract class AbstractFileController implements FileController
         }
         catch (IOException ex)
         {
-            LOGGER.error("", ex);
+
             MessageBox.showException(ex);
         }
     }
@@ -71,7 +67,6 @@ public abstract class AbstractFileController implements FileController
             }
             catch (IOException e)
             {
-                LOGGER.error("no fue posible crear el archivo.", e);
             }
         }
     }
@@ -110,7 +105,6 @@ public abstract class AbstractFileController implements FileController
         catch (IOException ex)
         {
             MessageBox.showException(ex);
-            LOGGER.error("Imposible reabrir el stream", ex);
         }
     }
 
