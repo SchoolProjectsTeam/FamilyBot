@@ -118,14 +118,5 @@ public class MainWindows extends JFrame {
 		}
 		contentPane.updateUI();
 	}
-
-
-	public void test() {
-		int i = 0;
-		JButton a = new JButton(("Familia "+ Integer.toString(i)));
-		familyList.add(a, "cell 0"+" " + i);
-		scrollList.updateUI();
-		i++;
-	}
-
+	
 }

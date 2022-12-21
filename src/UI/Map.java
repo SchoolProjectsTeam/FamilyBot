@@ -46,7 +46,7 @@ public class Map extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Map(Board map, Family family) {
+	public Map(Family family) {
 		this.family = family;
 		this.map = map;
 		cells = new JPanel [map.getX()][map.getY()];
