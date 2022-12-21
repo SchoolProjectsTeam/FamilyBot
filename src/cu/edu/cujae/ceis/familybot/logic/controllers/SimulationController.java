@@ -1,14 +1,10 @@
 package cu.edu.cujae.ceis.familybot.logic.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cu.edu.cujae.ceis.familybot.logic.core.Board;
 import cu.edu.cujae.ceis.familybot.logic.core.Family;
-import cu.edu.cujae.ceis.familybot.ui.utils.MessageBox;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class SimulationController
 {
