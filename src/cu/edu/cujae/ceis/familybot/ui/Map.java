@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.plaf.DimensionUIResource;
 import net.miginfocom.swing.MigLayout;
+import javax.swing.JTextField;
 
 public class Map extends JFrame
 {
@@ -25,6 +26,8 @@ public class Map extends JFrame
     private JPanel[] bots;
     private Board map;
     private Family family;
+    private JLabel basicsStats = new JLabel("");
+    private JLabel basicsStatsGeneration = new JLabel("");
 
     /**
      * Create the frame.
@@ -58,26 +61,30 @@ public class Map extends JFrame
 
         JPanel buttonsPanel = new JPanel();
         contentPane.add(buttonsPanel, BorderLayout.EAST);
-        buttonsPanel.setLayout(new MigLayout("", "[]", "[][][]"));
+        buttonsPanel.setLayout(new MigLayout("", "[grow]", "[][][][][][]"));
+        
+                JButton btnTeststep = new JButton("Siguiente Paso");
+                btnTeststep.addActionListener(new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent arg0)
+                    {
+                        nextStep();
+                    }
+                });
+                
+                JLabel lblNewLabel = new JLabel("Introduzca la generacion a simular");
+                buttonsPanel.add(lblNewLabel, "cell 0 0,growx");
+                
+                textGeneration = new JTextField();
+                buttonsPanel.add(textGeneration, "cell 0 1,growx");
+                textGeneration.setColumns(10);
+                buttonsPanel.add(btnTeststep, "cell 0 3,growx");
+                
 
-        JButton btnCorrerSimulacion = new JButton("Correr Simulacion");
-        btnCorrerSimulacion.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent arg0)
-            {
-            }
-        });
-        buttonsPanel.add(btnCorrerSimulacion, "cell 0 0,alignx center");
+                buttonsPanel.add(basicsStats, "cell 0 4");
+                
 
-        JButton btnTeststep = new JButton("Siguiente Paso");
-        btnTeststep.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent arg0)
-            {
-                nextStep();
-            }
-        });
-        buttonsPanel.add(btnTeststep, "cell 0 2,growx");
+                buttonsPanel.add(basicsStatsGeneration, "cell 0 5");
     }
 
     public void dibujarMapa(Board map)
@@ -149,9 +156,19 @@ public class Map extends JFrame
     int countSteps = 0;
     int countRobots = 0;
     int countGeneration = 0;
+    private JTextField textGeneration;
+    
+    
     public void nextStep()
     {
+    	if(!(textGeneration.getText().length() == 0)){
+    	countGeneration = Integer.parseInt(textGeneration.getText()) ;
+    	}
+    	else {
+    		countGeneration = 0;
+    	}
     	if(countSteps<family.getBoard().maxSteps()) {
+    		System.out.println(family.getBoard().maxSteps() + " " + countSteps);
         for (Robot robot : family.getRecord().getGeneration(countGeneration))        {
         	cells[robot.getPath().get(countSteps).getX()][robot.getPath().get(countSteps).getY()].add(bots[countRobots]);
             countRobots++;
@@ -164,6 +181,8 @@ public class Map extends JFrame
     	else {
     		countSteps = 0;
     	}
+    	basicsStats.setText("Paso: \n" + countSteps + " - " + family.getBoard().maxSteps());
+    	basicsStatsGeneration.setText("Generacion: "+countGeneration);
     }
-
+    
 }
