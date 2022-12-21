@@ -1,41 +1,46 @@
-package familybot.logic.controllers;
+package cu.edu.cujae.ceis.familybot.logic.controllers;
 
+import cu.edu.cujae.ceis.familybot.logic.core.Family;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.naming.OperationNotSupportedException;
 
-import familybot.logic.core.Family;
+public class FileControllerSCSV extends AbstractFileController
+{
 
-public class FileControllerSCSV extends AbstractFileController {
+    @Override
+    public ArrayList<Family> read() throws OperationNotSupportedException
+    {
+        throw new OperationNotSupportedException("Can't read a .csv file.");
+    }
 
-	@Override
-	public ArrayList<Family> read() throws OperationNotSupportedException{
-		throw new OperationNotSupportedException("Can't read a .csv file.");
-	}
+    @Override
+    public void write(ArrayList<Family> array)
+    {
+        try
+        {
+            FileWriter csv = new FileWriter(file);
+            StringBuilder line = new StringBuilder();
+            for (Family fam : array)
+            {
+                line.append("Nombre de la Familia," + fam.getFrindlyID());
+                csv.write(line.toString());
+                line.append("Promedio de Pasos," + fam.getRecord().getAverage());
+                csv.write(line.toString());
+                //line.append("Mejor Camino," + fam.getRecord().getLastGeneration().get(0).getMoveRecord());
 
-	@Override
-	public void write(ArrayList<Family> array) {
-		try {
-			FileWriter csv = new FileWriter(file);
-			StringBuilder line = new StringBuilder();
-			for(Family fam : array) {
-				line.append("Nombre de la Familia," + fam.getFrindlyID());
-				csv.write(line.toString());
-				line.append("Promedio de Pasos," + fam.getRecord().getAverage());
-				csv.write(line.toString());
-				line.append("Mejor Camino," + fam.getRecord().getLastGeneration().get(0).getMoveRecord());
-				
-			}
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+            }
 
-	/*
+        }
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    /*
 	public boolean saveCSVData(String filename) {
 
         boolean success = false;
@@ -94,6 +99,5 @@ public class FileControllerSCSV extends AbstractFileController {
 
     }
 
-	 */
-
+     */
 }
