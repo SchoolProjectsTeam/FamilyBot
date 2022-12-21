@@ -71,7 +71,6 @@ public class Robot implements Cloneable, Serializable
 
     public boolean walkStep()
     {
-        Coordinate pastPosition = (Coordinate) position.clone();
         Direction next = movements.poll();
         if (next == null)
         {
