@@ -35,15 +35,17 @@ public class FileControllerSCSV{
 				csv.write(line.toString());
 				for(int i = 0; i < 50; i++) {
 					List<Robot> robots = fam.getRecord().getGeneration(i);
+					System.out.println(robots.get(0).getMoveRecord());
 					line = new StringBuilder();
 					line.append("Generación," + i + "\n");
 					csv.write(line.toString());
 					line = new StringBuilder();
 					line.append("Robot ID,Lista de Pasos\n");
 					csv.write(line.toString());
-					for(Robot rob : robots) {
+					for(int j = 0; j < 10; j++) {
+						System.out.println(robots.get(j).getID());
 						line = new StringBuilder();
-						line.append(rob.getID() + "," + rob.getMoveRecord() + "\n");
+						line.append(robots.get(j).getID() + "," + robots.get(j).getMoveRecord() + "\n");
 						csv.write(line.toString());
 					}
 				}
