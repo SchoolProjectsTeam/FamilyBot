@@ -32,23 +32,12 @@ public class Map extends JFrame
     public Map(Family family)
     {
         this.family = family;
-        this.map = map;
+        this.map = this.family.getBoard();
         cells = new JPanel[map.getX()][map.getY()];
         bots = new JPanel[10];
         initComponents();
         dibujarMapa(map);
-        System.out.println("Inicio " + map.startPosition().getX() + " " + map.startPosition().getY() + "\n" + "Fin "
-                                   + map.getEnd().getX() + " " + map.getEnd().getY());
         family.runSimulation();
-
-        for (Robot rob : family.getRobots())
-        {
-            System.out.println("Robot " + rob.getID() + "\n" + "Coordenadas :");
-            for (Coordinate coor : rob.getPath())
-            {
-                System.out.println(coor);
-            }
-        }
 
     }
 
@@ -167,24 +156,28 @@ public class Map extends JFrame
             numRobot++;
         }
         cells[map.startPosition().getX()][map.startPosition().getY()].updateUI();
-
     }
 
+    
+    
     int countSteps = 0;
     int countRobots = 0;
-
+    int countGeneration = 0;
     public void nextStep()
     {
-
-        for (Robot robot : family.getRobots())
-        {
-
+    	if(countSteps<family.getBoard().maxSteps()) {
+        for (Robot robot : family.getRecord().getGeneration(countGeneration))        {
+        	cells[robot.getPath().get(countSteps).getX()][robot.getPath().get(countSteps).getY()].add(bots[countRobots]);
             countRobots++;
             System.out.println("Robot" + " " + robot.getID() + " " + robot.getPath().get(countSteps));
         }
         countSteps++;
         countRobots = 0;
         mapPanel.updateUI();
+    	}
+    	else {
+    		countSteps = 0;
+    	}
     }
 
 }

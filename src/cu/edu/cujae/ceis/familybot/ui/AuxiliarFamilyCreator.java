@@ -4,6 +4,8 @@ import cu.edu.cujae.ceis.familybot.logic.controllers.SimulationController;
 import cu.edu.cujae.ceis.familybot.logic.core.Board;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +23,7 @@ public class AuxiliarFamilyCreator extends JFrame
 
     private UiUtil util;
     private JTextField textName;
+    private ArrayList<Map> maps;
 
     public AuxiliarFamilyCreator()
     {

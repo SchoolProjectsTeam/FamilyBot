@@ -47,7 +47,7 @@ public class InicialQuestionFrame extends JFrame
 
     private void initializate()
     {
-        auxCreator = new AuxiliarFamilyCreator();
+        //auxCreator = new AuxiliarFamilyCreator();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 382, 176);
         contentPane = new JPanel();
