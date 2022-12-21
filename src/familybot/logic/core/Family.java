@@ -92,6 +92,7 @@ public class Family implements Serializable{
 		return new ID(charGen.get(), actualWalk);
 	}
 	
+	public Board getBoard() {return map;}
 	public List<Robot> getRobots(){return robots;}
 	public SimulationRecord getRecord() {return record;}
 	public String getFrindlyID() {return friendlyID;}
