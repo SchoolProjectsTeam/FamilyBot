@@ -33,7 +33,7 @@ public class SimulationRecord implements Serializable{
     }
     
     public List<Robot> getLastGeneration(){
-    	return generations.get(actualGen);
+    	return generations.get(actualGen - 1);
     }
     
     public int getAverage() {

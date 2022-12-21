@@ -15,39 +15,65 @@ import cu.edu.cujae.ceis.familybot.logic.core.Robot;
 
 public class FileControllerSCSV{
 
-	File file;
+	String path = PathConstants.APP_DIRECTORY.getAbsolutePath();
+	String fileName = "data.csv";
+	File file = new File(PathConstants.APP_DIRECTORY, fileName);
 
 	public void write(ArrayList<Family> array) {
+		ensureRequirements();
 		try {
 			FileWriter csv = new FileWriter(file);
 			StringBuilder line = new StringBuilder();
 			for(Family fam : array) {
-				line.append("Nombre de la Familia," + fam.getFrindlyID());
+				line.append("Nombre de la Familia," + fam.getFrindlyID() + "\n");
 				csv.write(line.toString());
 				line = new StringBuilder();
-				line.append("Promedio de Pasos," + fam.getRecord().getAverage());
+				line.append("Promedio de Pasos," + fam.getRecord().getAverage() + "\n");
 				csv.write(line.toString());
 				line = new StringBuilder();
-				line.append("Mejor Camino," + fam.getRecord().getLastGeneration().get(0).getMoveRecord());
+				line.append("Mejor Camino," + fam.getRecord().getLastGeneration().get(0).getMoveRecord() + "\n");
 				csv.write(line.toString());
 				for(int i = 0; i < 50; i++) {
 					List<Robot> robots = fam.getRecord().getGeneration(i);
 					line = new StringBuilder();
-					line.append("Robot ID, Lista de Pasos");
+					line.append("Generación," + i + "\n");
+					csv.write(line.toString());
+					line = new StringBuilder();
+					line.append("Robot ID,Lista de Pasos\n");
 					csv.write(line.toString());
 					for(Robot rob : robots) {
 						line = new StringBuilder();
-						line.append(rob.getID() + "," + rob.getMoveRecord());
+						line.append(rob.getID() + "," + rob.getMoveRecord() + "\n");
 						csv.write(line.toString());
 					}
 				}
 			}
+			csv.close();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	private void ensureRequirements()
+    {
+        File directory = new File(path);
+        if (!directory.exists())
+        {
+            directory.mkdirs();
+        }
+        if (!file.exists())
+        {
+            try
+            {
+                file.createNewFile();
+            }
+            catch (IOException e)
+            {
+            }
+        }
+    }
 
 	/*
 	public boolean saveCSVData(String filename) {

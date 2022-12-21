@@ -113,4 +113,9 @@ public class SimulationController
             MessageBox.showException(ex);
         }
     }
+    
+    public void printCSV() {
+    	FileControllerSCSV csv = new FileControllerSCSV();
+    	csv.write(families);
+    }
 }
