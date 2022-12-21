@@ -1,15 +1,21 @@
 package cu.edu.cujae.ceis.familybot.logic.controllers;
 
 import cu.edu.cujae.ceis.familybot.logic.core.Family;
+import java.io.IOException;
+import java.util.List;
 
+public interface FileController
+{
 
-import java.util.ArrayList;
+    public static final int MODE_READ = 1;
+    public static final int MODE_WRITE = 2;
+    
+    public void close();
 
-import javax.naming.OperationNotSupportedException;
+    public List<Family> read() throws IOException, ClassNotFoundException;
 
+    public void write(List<Family> array) throws IOException;
 
-
-public interface FileController {
-	public ArrayList<Family> read() throws OperationNotSupportedException;
-	public void write(ArrayList<Family> array);
+    public void reopen(int newMode);
+    
 }

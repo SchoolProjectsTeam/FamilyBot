@@ -2,6 +2,7 @@ package cu.edu.cujae.ceis.familybot.logic.controllers;
 
 
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,14 +13,10 @@ import cu.edu.cujae.ceis.familybot.logic.core.Family;
 
 
 
-public class FileControllerSCSV extends AbstractFileController {
+public class FileControllerSCSV{
+	
+	File file;
 
-	@Override
-	public ArrayList<Family> read() throws OperationNotSupportedException{
-		throw new OperationNotSupportedException("Can't read a .csv file.");
-	}
-
-	@Override
 	public void write(ArrayList<Family> array) {
 		try {
 			FileWriter csv = new FileWriter(file);
