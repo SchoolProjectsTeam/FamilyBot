@@ -69,9 +69,9 @@ public class Robot implements Cloneable, Serializable {
         Direction next = movements.poll();
         if(next == null){
             return false;
-        }
-        else if(!pastPosition.equals(position.translate(next))){
-            path.add((Coordinate)position.clone());   
+        } else {
+        	position.translate(next);
+        	path.add((Coordinate)position.clone());
         }
         return true;
     }
