@@ -4,13 +4,16 @@
 */
 package familybot.logic.core;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rog
  */
-public class Coordinate {
+public class Coordinate implements Serializable{
     
-    private Integer x;
+	private static final long serialVersionUID = 498578587811232739L;
+	private Integer x;
     private Integer y;
     private Board board;
     
@@ -52,6 +55,11 @@ public class Coordinate {
                 throw new IllegalArgumentException("Not supported direction.");
         }
         return this;
+    }
+    
+    public void restart() {
+    	this.x = board.startPosition().getX();
+    	this.y = board.startPosition().getY();
     }
     
     public Integer getX(){return x;}

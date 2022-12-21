@@ -33,14 +33,11 @@ public class DirectionMaker {
                 result = Direction.Down;
                 break;
         }
+        //generator = new Random();
         return result;
     }
 
     public static Direction get(Direction one, Direction two) {
-        if (generator.nextInt(1) == 0) {
-            return one;
-        } else {
-            return two;
-        }
+        return (generator.nextInt() % 2 == 0) ? one : two;
     }
 }
